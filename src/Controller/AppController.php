@@ -67,3 +67,4 @@ class AppController extends Controller
         }
     }
 }
+// src/Controller/ArticlesController.php

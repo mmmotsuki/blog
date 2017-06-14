@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -38,7 +37,6 @@ class ArticlesController extends AppController
         }
         $this->set('article', $article);
     }
-
     public function edit($id = null)
     {
         $article = $this->Articles->get($id);
@@ -53,7 +51,6 @@ class ArticlesController extends AppController
 
         $this->set('article', $article);
     }
-
     public function delete($id)
     {
         $this->request->allowMethod(['post', 'delete']);
@@ -65,5 +62,4 @@ class ArticlesController extends AppController
         }
     }
 }
-
 ?>

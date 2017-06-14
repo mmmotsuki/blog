@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Model\Table;
 
 use Cake\ORM\Table;
@@ -23,4 +22,3 @@ class ArticlesTable extends Table
         return $validator;
     }
 }
-?>
