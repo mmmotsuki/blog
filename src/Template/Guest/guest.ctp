@@ -1,15 +1,15 @@
 <!-- File: src/Template/Articles/index.ctp (delete links added) -->
 
-<h1>Blog articles</h1>
-<p><?= $this->Html->link('Add Article', ['action' => 'add']) ?></p>
+<h1>Articles top</h1>
 <table>
     <tr>
         <th>Id</th>
-        <th>Title</th>
-        <th>Created</th>
-        <th>Actions</th>
-    </tr>
+        <th>Titleタイトル</th>
+        <th>Created日時</th>
 
+
+
+    </tr>
 <!-- ここで $articles クエリオブジェクトをループして、投稿情報を表示 -->
 
     <?php foreach ($articles as $article): ?>
@@ -21,14 +21,7 @@
         <td>
             <?= $article->created->format(DATE_RFC850) ?>
         </td>
-        <td>
-            <?= $this->Form->postLink(
-                'Delete',
-                ['action' => 'delete', $article->id],
-                ['confirm' => 'Are you sure?'])
-            ?>
-            <?= $this->Html->link('Edit', ['action' => 'edit', $article->id]) ?>
-        </td>
+
     </tr>
     <?php endforeach; ?>
 

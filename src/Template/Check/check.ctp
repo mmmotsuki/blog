@@ -2,18 +2,18 @@
 
 <h1>Blog articles</h1>
 <p><?= $this->Html->link('Add Article', ['action' => 'add']) ?></p>
-<table>
-    <tr>
+<div>
+    <div>
         <div>Id</div>
         <div>Title</div>
         <div>Created</div>
         <div>Actions</div>
-    </tr>
+    </div>
 
 <!-- ここで $articles クエリオブジェクトをループして、投稿情報を表示 -->
 
     <?php foreach ($articles as $article): ?>
-    <tr>
+    <div>
         <div><?= $article->id ?></div>
         <div>
             <?= $this->Html->link($article->title, ['action' => 'view', $article->id]) ?>
@@ -29,7 +29,7 @@
             ?>
             <?= $this->Html->link('Edit', ['action' => 'edit', $article->id]) ?>
         </div>
-    </tr>
+    </div>
     <?php endforeach; ?>
 
-</table>
+</div>
