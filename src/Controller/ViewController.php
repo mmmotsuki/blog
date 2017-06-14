@@ -3,7 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
-class ArticlesController extends AppController
+class ViewController extends AppController
 {
 
     public function initialize()
