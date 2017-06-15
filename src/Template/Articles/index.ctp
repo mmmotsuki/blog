@@ -31,7 +31,7 @@
         </div>
         <div>
             <?= $this->Html->link('編集',
-                ['action' => 'edit', $article->id])
+                ['action' => 'add', $article->id])
             ?>
             <?= $this->Form->postLink('削除',
                 ['action' => 'delete', $article->id],
