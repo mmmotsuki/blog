@@ -1,3 +1,4 @@
+<!-- File: src/Template/Articles/index.ctp (delete links added) -->
 
 <h1>Articles top</h1>
 <div>
