@@ -1,5 +1,5 @@
 <!-- File: src/Template/Articles/view.ctp -->
-
+<body>
 <h1><?= h($article->title) ?></h1>
 <div><?= h($article->image) ?></div><!--ここに画像上が出るように変えてね-->
 <div><?= h($article->body) ?></div>
@@ -25,3 +25,4 @@
         </div>
     </div>
 </div>
+</body>

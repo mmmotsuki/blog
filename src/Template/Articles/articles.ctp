@@ -1,12 +1,7 @@
 <!-- File: src/Template/Articles/add.ctp -->
-<head>
-<div><a href="index">Articles</a></div>
-<div><a href="login">ログイン</a></div>
-</head>
-
 <body>
 <h1>Articles top</h1>
-<p><?= $this->Html->link('新規作成', ['action' => 'add']) ?></p>
+<p><?= $this->Html->link('新規作成', ['action' => 'post']) ?></p>   <!--if文くれ-->
 <div>
     <div>
         <div>Id</div>
@@ -31,12 +26,12 @@
         </div>
         <div>
             <?= $this->Html->link('編集',
-                ['action' => 'edit', $article->id])
-            ?>
+                ['action' => 'post', $article->id])
+            ?>    <!--if文くれ-->
             <?= $this->Form->postLink('削除',
                 ['action' => 'delete', $article->id],
                 ['confirm' => 'はい/いいえボタン'])//アラートボックス内　OK/キャンセル　を　はい/いいえ　に変えて欲しいな
-            ?>
+            ?>    <!--if文くれ-->
         </div>　<!--ゲスト時には隠して欲しいな-->
     </div>
     <?php endforeach; ?>

@@ -7,22 +7,25 @@
         <div>Id</div>
         <div>Titleタイトル</div>
         <div>Created日時</div>
-        <div id="visi">Actions編集、削除</div><!--ゲスト時には隠して欲しいな-->
+        <div id="disp">Actions編集、削除</div><!--ゲスト時には隠して欲しいな-->
                 <div>
+                    <div id="disp">この文章を表示したり消したりします。</div>
+
                     <form>
-                        <br><input type="radio" name="disp" value="undisplay" onclick="hyoji1(1)">ゲスト表示</br>
-                        <input type="radio" name="disp" value="display"checked onclick="hyoji1(0)">管理者表示
+                    <br><input type="radio" name="disp" value="undisplay" onclick="hyoji1(1)">ゲスト表示</br>
+                    <input type="radio" name="disp" value="display"checked onclick="hyoji1(0)">管理者表示
                     </form>
+
                     <script>
                     function hyoji1(num)
                     {
                       if (num == 0)
                       {
-                        document.getElementById("visi").style.visibility="visible";
+                        document.getElementById("disp").style.display="block";
                       }
                       else
                       {
-                        document.getElementById("visi").style.visibility="hidden";
+                        document.getElementById("disp").style.display="none";
                       }
                     }
                     </script>
@@ -39,7 +42,7 @@
         <div>
             <?= $article->created->format(DATE_RFC850) ?>
         </div>
-        <div id="visi">
+        <div id="disp">
             <?= $this->Html->link('編集',
                 ['action' => 'add', $article->id])
             ?>    <!--if文くれ-->

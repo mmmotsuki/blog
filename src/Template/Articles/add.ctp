@@ -1,9 +1,4 @@
 <!-- File: src/Template/Articles/add.ctp -->
-<head>
-<div><a href="index">Articles</a></div>
-<div><a href="login">ログイン</a></div>
-</head>
-
 <body>
 <h1>Add Article</h1>
     <div>
