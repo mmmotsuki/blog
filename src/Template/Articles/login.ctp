@@ -1,5 +1,5 @@
 <!-- File: src/Template/Articles/index.ctp (delete links added) -->
-
+<body>
 <h1>Articles top</h1>
 <div>
     <div><label class="lavel">ユーザーネーム</label></div>
@@ -14,3 +14,4 @@
         <input type="submit" value="送信" /><!-- ボタン作ってね -->
     </div>
 </div>
+</body>

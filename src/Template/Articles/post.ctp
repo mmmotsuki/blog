@@ -1,31 +1,35 @@
-<!-- File: src/Template/Articles/index.ctp (delete links added) -->
-
-<h1>Articles top</h1>
-<table>
-        <td><input type="text" name="namae" placeholder="記事のタイトル" value=""maxlength="10" pattern="^\S+$" required></td></br>
-</table>
-<table>
-        <textarea name="content" rows="5" placeholder="記事の本文" maxlength="400"></textarea>
-</table>
-<table>
-<th class=th2><div class="button1">
-            	<input type="submit" value="画像" />
-            </div></th>
-<th class=th2><div class="button1">
-                <input type="submit" value="削除" />
-            </div></th>
-</table>
-<table>
-<td><input type="text" name="namae" placeholder="画像ファイル" value=""maxlength="10"></td>
-</table>
-<table>
-<td>
-    <input type="radio" name="sex" value="guest"> 画像上
-    <input type="radio" name="sex" value="admin"checked>画像下
-</td>
-</table>
-<table>
-<th class=th2><div class="button1">
-            <input type="submit" value="投稿" />
-            </div></th>
-</table>
+<!-- File: src/Template/Articles/add.ctp -->
+<body>
+<h1>post Article</h1>
+    <div>
+        <div>
+            <?php echo $this->Form->create($article); ?>
+        </div>
+        <div>
+            <?php echo $this->Form->control('title'); ?><!--titleいじるとアラートでなくなる-->
+        </div>
+        <div>
+            <?php echo $this->Form->control('body', ['rows' => '3']); ?><!--bodyいじるとアラートでなくなる-->
+        </div>
+        <div>
+            <?php echo $this->Form->button(__('画像')); ?><!--ボタン変えて！関数探して-->
+        </div>
+        <div>
+            <?php echo $this->Form->button(__('削除')); ?><!--ボタン変えて！関数探して-->
+        </div>
+        <div>
+            <input type="text" name="namae" placeholder="画像ファイル" value=""maxlength="10">
+            <!--  echo $this->Form->control('画像ファイル');  -->
+        </div>
+        <div>
+            <input type="radio" name="sex" value="image"checked> 画像上
+            <input type="radio" name="sex" value="image">画像下
+        </div>
+        <div>
+            <?php echo $this->Form->button(__('投稿')); ?>
+        </div>
+        <div>
+            <?php echo $this->Form->end(); ?>
+        </div>
+    </div>
+</body>
