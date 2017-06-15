@@ -1,20 +1,18 @@
 <!-- File: src/Template/Articles/index.ctp (delete links added) -->
 
-<!-- File: src/Template/Articles/index.ctp (delete links added) -->
-
 <h1>Articles top</h1>
 <table>
         <td><input type="text" name="namae" placeholder="記事のタイトル" value=""maxlength="10" pattern="^\S+$" required></td></br>
 </table>
 <table>
-        <td><input type="text" name="namae" placeholder="記事の本文" value=""maxlength="10" pattern="^\S+$" required></td>
+        <textarea name="content" rows="5" placeholder="記事の本文" maxlength="400"></textarea>
 </table>
 <table>
 <th class=th2><div class="button1">
-            	<input type="submit" value="送信" />
+            	<input type="submit" value="画像" />
             </div></th>
 <th class=th2><div class="button1">
-                <input type="submit" value="送信" />
+                <input type="submit" value="削除" />
             </div></th>
 </table>
 <table>
@@ -28,6 +26,6 @@
 </table>
 <table>
 <th class=th2><div class="button1">
-            <input type="submit" value="送信" />
+            <input type="submit" value="投稿" />
             </div></th>
 </table>
