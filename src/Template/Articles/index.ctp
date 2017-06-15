@@ -1,20 +1,45 @@
+<!-- File: src/Template/Articles/add.ctp -->
+<head>
+<div><a href="index">Articles</a></div>
+<div><a href="login">ログイン</a></div>
+</head>
 
+<body>
 <h1>Articles top</h1>
+<p><?= $this->Html->link('新規作成', ['action' => 'add']) ?></p>
 <div>
-        <div><input type="text" name="namae" placeholder="記事のタイトル" value=""maxlength="10" pattern="^\S+$" required></div></br>
+    <div>
+        <div>Id</div>
+        <div>Titleタイトル</div>
+        <div>Created日時</div>
+        <div>Actions編集、削除</div><!--ゲスト時には隠して欲しいな-->
+                <div>
+                    <br><input type="radio" name="sex" value="guest"> ゲスト表示</br>
+                    <input type="radio" name="sex" value="admin"checked>管理者表示
+                </div>
+    </div>
+<!-- ここで $articles クエリオブジェクトをループして、投稿情報を表示 -->
+
+    <?php foreach ($articles as $article): ?>
+    <div>
+        <div><?= $article->id ?></div>
+        <div>
+            <?= $this->Html->link($article->title, ['action' => 'view', $article->id]) ?>
+        </div>
+        <div>
+            <?= $article->created->format(DATE_RFC850) ?>
+        </div>
+        <div>
+            <?= $this->Html->link('編集',
+                ['action' => 'edit', $article->id])
+            ?>
+            <?= $this->Form->postLink('削除',
+                ['action' => 'delete', $article->id],
+                ['confirm' => 'はい/いいえボタン'])//アラートボックス内　OK/キャンセル　を　はい/いいえ　に変えて欲しいな
+            ?>
+        </div>　<!--ゲスト時には隠して欲しいな-->
+    </div>
+    <?php endforeach; ?>
+
 </div>
-<div>
-<div><input type="text" name="namae" placeholder="画像ファイル上" value=""maxlength="10"></div>
-</div>
-<div>
-        <textarea name="content" rows="5" placeholder="記事の本文" maxlength="400"></textarea>
-</div>
-<div>
-<div><input type="text" name="namae" placeholder="画像ファイル下" value=""maxlength="10"></div>
-</div>
-<div>
-<div class=th2><div class="button1">
-</textarea><input type="submit" value="戻る" />
-<input type="submit" value="完了" />
-            </div></div>
-</div>
+</body>

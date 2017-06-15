@@ -1,5 +1,4 @@
 <!-- File: src/Template/Articles/index.ctp (delete links added) -->
-
 <h1>Articles top</h1>
 <div>
         <div><input type="text" name="namae" placeholder="記事のタイトル" value=""maxlength="10" pattern="^\S+$" required></div></br>
