@@ -7,7 +7,7 @@
         <div>Id</div>
         <div>Titleタイトル</div>
         <div>Created日時</div>
-        <div id="visi">Actions編集、削除</div><!--ゲスト時には隠して欲しいな-->
+        <div class="visi">Actions編集、削除</div><!--ゲスト時には隠して欲しいな-->
                 <div>
                     <form>
                         <br><input type="radio" name="disp" value="undisplay" onclick="hyoji1(1)">ゲスト表示</br>
@@ -18,11 +18,17 @@
                     {
                       if (num == 0)
                       {
-                        document.getElementById("visi").style.visibility="visible";
+                        var e = document.getElemenstByclassname("visi").style.visibility="visible";
+                        for(var = i; i < e.length; i++){
+                            e[i].display.style = "visible";
+                        }
                       }
                       else
                       {
-                        document.getElementById("visi").style.visibility="hidden";
+                        var e = document.getElementByclassname("visi").style.visibility="hidden";
+                        for(var = i; i < e.length; i++){
+                            e[i].display.style = "hidden";
+                        }
                       }
                     }
                     </script>
@@ -39,7 +45,7 @@
         <div>
             <?= $article->created->format(DATE_RFC850) ?>
         </div>
-        <div id="visi">
+        <div class="visi">
             <?= $this->Html->link('編集',
                 ['action' => 'add', $article->id])
             ?>    <!--if文くれ-->
