@@ -1,6 +1,6 @@
 <!-- File: src/Template/Articles/index.ctp (delete links added) -->
 
-<h1>Articles top</h1>
+
 <div>
     <div><label class="lavel">ユーザーネーム</label></div>
     <div><input type="text" name="namae" placeholder="ユーザーネーム" value=""maxlength="10" pattern="^\S+$" required></div>
