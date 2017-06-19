@@ -2,9 +2,9 @@
 
 <body>
     <div>
-        <div>
+        <!-- <div>
             <?php echo $this->Form->create($article); ?>
-        </div>
+        </div> -->
         <div>
             <?php echo $this->Form->control('記事のタイトル'); ?><!--titleいじるとアラートでなくなる-->
         </div>

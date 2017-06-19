@@ -22,8 +22,8 @@
             <!--  echo $this->Form->control('画像ファイル');  -->
         </div>
         <div>
-            <input type="radio" name="sex" value="image"checked> 画像上
-            <input type="radio" name="sex" value="image">画像下
+            <input type="radio" name="image" value="image"checked> 画像上
+            <input type="radio" name="image" value="image">画像下
         </div>
         <div>
             <?php echo $this->Form->button(__('投稿')); ?>
