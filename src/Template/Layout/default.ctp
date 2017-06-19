@@ -48,7 +48,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             </ul>
         </div> -->
         <div class="right">
-            <?= $this->Form->create(null,['url'=>['controller'=>'login','action'=>'login']]);?>
+            <?= $this->Form->create(null,['url'=>['controller'=>'users','action'=>'login']]);?>
             <?= $this->Form->button('ログイン')?>
             <?= $this->Form->end()?>
         </div>
