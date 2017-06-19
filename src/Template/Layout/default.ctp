@@ -47,12 +47,29 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
             </ul>
         </div> -->
-        <div class="right">
-            <?= $this->Form->create(null,['url'=>['controller'=>'users','action'=>'login']]);?>
-            <?= $this->Form->button('ログイン')?>
-            <?= $this->Form->end()?>
-        </div>
-    </nav>
+
+<?php
+if(!empty( $auth )){
+?>
+<div class="right">
+    <?= $this->Form->create(null,['url'=>['controller'=>'users','action'=>'logout']]);?>
+    <?= $this->Form->button('ログアウト')?>
+    <?= $this->Form->end()?>
+</div>
+
+<?php
+} else {
+?>
+<div class="right">
+    <?= $this->Form->create(null,['url'=>['controller'=>'users','action'=>'login']]);?>
+    <?= $this->Form->button('ログイン')?>
+    <?= $this->Form->end()?>
+</div>
+<?php
+}
+?>
+
+</nav>
 
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
