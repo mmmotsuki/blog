@@ -1,14 +1,15 @@
-<!-- app/View/Users/add.ctp -->
+<!-- src/Template/Users/add.ctp -->
+
 <div class="users form">
-<?php echo $this->Form->create('User'); ?>
+<?= $this->Form->create($user) ?>
     <fieldset>
-        <legend><?php echo __('Add User'); ?></legend>
-        <?php echo $this->Form->input('username');
-        echo $this->Form->input('password');
-        echo $this->Form->input('role', array(
-            'options' => array('admin' => 'Admin', 'author' => 'Author')
-        ));
-    ?>
-    </fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+        <legend><?= __('Add User') ?></legend>
+        <?= $this->Form->control('username') ?>
+        <?= $this->Form->control('password') ?>
+        <?= $this->Form->control('role', [
+            'options' => ['admin' => 'Admin', 'author' => 'Author']
+        ]) ?>
+   </fieldset>
+<?= $this->Form->button(__('Submit')); ?>
+<?= $this->Form->end() ?>
 </div>

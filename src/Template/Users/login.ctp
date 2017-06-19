@@ -1,15 +1,15 @@
 //app/View/Users/login.ctp
 
 <div class="users form">
-<?php echo $this->Flash->render('auth'); ?>
-<?php echo $this->Form->create('User'); ?>
+<?php echo $this->Flash->render(); ?>
+<?php echo $this->Form->create(); ?>
     <fieldset>
         <legend>
-            <?php echo __('Please enter your username and password'); ?>
+            <?= __('Please enter your username and password'); ?>
         </legend>
-        <?php echo $this->Form->input('username');
-        echo $this->Form->input('password');
-    ?>
+        <?= $this->Form->control('username'); ?>
+        <?= $this->Form->control('password'); ?>
     </fieldset>
-<?php echo $this->Form->end(__('Login')); ?>
+    <?= $this->Form->button(__('Login'))?>
+<?= $this->Form->end(); ?>
 </div>

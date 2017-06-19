@@ -1,48 +1,46 @@
 <?php
 namespace App\Controller;
 use App\Controller\AppController;
-App::uses('AppController', 'Controller');
+use Cake\Event\Event;
 
 class UsersController extends AppController {
 
-    public function beforeFilter() {
-        parent::beforeFilter();
-        $this->Auth->allow('add', 'logout');
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+        $this->Auth->allow(['add', 'logout']);
     }
 
     public function index() {
-        $this->User->recursive = 0;
-        $this->set('users', $this->paginate());
+        $this->set('users', $this->Users->find('all'));
     }
 
-    public function view($id = null) {
-        $this->User->id = $id;
-        if (!$this->User->exists()) {
-            throw new NotFoundException(__('Invalid user'));
-        }
-        $this->set('user', $this->User->findById($id));
+    public function view($id)
+    {
+        $user = $this->Users->get($id);
+        $this->set(compact('user'));
     }
 
-    public function add() {
+    public function add()
+    {
+        $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
-            $this->User->create();
-            if ($this->User->save($this->request->data)) {
-                $this->Flash->success(__('The user has been saved'));
-                return $this->redirect(array('action' => 'index'));
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
+                return $this->redirect(['action' => 'add']);
             }
-            $this->Flash->error(
-                __('The user could not be saved. Please, try again.')
-            );
+            $this->Flash->error(__('Unable to add the user.'));
         }
+        $this->set('user', $user);
     }
 
     public function edit($id = null) {
         $this->User->id = $id;
-        if (!$this->User->exists()) {
+        if (!$this->Users->exists()) {
             throw new NotFoundException(__('Invalid user'));
         }
         if ($this->request->is('post') || $this->request->is('put')) {
-            if ($this->User->save($this->request->data)) {
+            if ($this->Users->save($this->request->data)) {
                 $this->Flash->success(__('The user has been saved'));
                 return $this->redirect(array('action' => 'index'));
             }
@@ -75,16 +73,18 @@ class UsersController extends AppController {
 
     public function login() {
         if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                $this->redirect($this->Auth->redirect());
-            } else {
-                $this->Flash->error(__('Invalid username or password, try again'));
+            $user = $this->Auth->identify();
+            if ($user) {
+                $this->Auth->setUser($user);
+                return $this->redirect($this->Auth->redirectUrl());
             }
+            $this->Flash->error(__('Invalid username or password, try again'));
         }
     }
 
-    public function logout() {
-        $this->redirect($this->Auth->logout());
+    public function logout()
+    {
+        return $this->redirect($this->Auth->logout());
     }
 
 }
