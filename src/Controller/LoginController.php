@@ -13,7 +13,7 @@ class LoginController extends AppController
 
     public function login()
     {
-        $cookieValue = "111";
+        $cookieValue = "1";
         // Cookieに値を保存する
         setcookie("login_key", $cookieValue);
     }
