@@ -25,8 +25,38 @@ use Cake\Event\Event;
  *
  * @link http://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
+
 class AppController extends Controller
 {
+
+    // public $components = array(
+    //     'Flash',
+    //     'Auth' => array(
+    //         'loginRedirect' => array(
+    //             'controller' => 'posts',
+    //             'action' => 'index'
+    //         ),
+    //         'logoutRedirect' => array(
+    //             'controller' => 'pages',
+    //             'action' => 'display',
+    //             'home'
+    //         ),
+    //         'authenticate' => array(
+    //             'Form' => array(
+    //                 'passwordHasher' => 'Blowfish'
+    //             )
+    //         )
+    //     )
+    // );
+
+    public function beforeRender(Event $event)
+    {
+        if (!array_key_exists('_serialize', $this->viewVars) &&
+            in_array($this->response->type(), ['application/json', 'application/xml'])
+        ) {
+            $this->set('_serialize', true);
+        }
+    }
 
     /**
      * Initialization hook method.
@@ -39,10 +69,20 @@ class AppController extends Controller
      */
     public function initialize()
     {
-        parent::initialize();
+        // parent::initialize();
 
-        $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth', [
+            'loginRedirect' => [
+                'controller' => 'Articles',
+                'action' => 'index'
+            ],
+            'logoutRedirect' => [
+                'controller' => 'Pages',
+                'action' => 'display',
+                'home'
+            ]
+        ]);
 
         /*
          * Enable the following components for recommended CakePHP security settings.
@@ -52,19 +92,29 @@ class AppController extends Controller
         //$this->loadComponent('Csrf');
     }
 
+    public function beforeFilter(Event $event)
+    {
+        $this->Auth->allow(['index', 'view', 'display']);
+
+        $this->set('auth',$this->Auth->user() );
+    }
+
+    public function isAuthorized($user)
+    {
+        // Admin can access every action
+        if (isset($user['role']) && $user['role'] === 'admin') {
+            return true;
+        }
+
+        // Default deny
+        return false;
+    }
+
     /**
      * Before render callback.
      *
      * @param \Cake\Event\Event $event The beforeRender event.
      * @return \Cake\Network\Response|null|void
      */
-    public function beforeRender(Event $event)
-    {
-        if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])
-        ) {
-            $this->set('_serialize', true);
-        }
-    }
+
 }
-// src/Controller/ArticlesController.php
