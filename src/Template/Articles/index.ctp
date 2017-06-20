@@ -1,15 +1,9 @@
 <!-- File: src/Template/Articles/add.ctp -->
-<<<<<<< HEAD
-<?php
-  $cookieValue = "0";
-?>
-<?php
-  if($cookieValue = "1"){
-=======
+
 
 <?php
   if(!empty( $auth )){
->>>>>>> 87251e9004a355edc4b7bad28995b6ab5c03a096
+
 ?>
     <!--ログイン時の処理-->
 
@@ -20,10 +14,8 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript">
 
 <script type="text/javascript">
-<<<<<<< HEAD
-=======
 
->>>>>>> 87251e9004a355edc4b7bad28995b6ab5c03a096
+
 function hoge(evt){
 　var t = evt.target || evt.srcElement;
 　if(t.nodeName=="BUTTON")
@@ -38,15 +30,10 @@ function fuga(str){
 　　　d.style.display = reg.test(str)?"block":"none";
 　　}
 }
-<<<<<<< HEAD
+
 </script>
 <!-- ↑まだ理解できてない -->
-=======
 
-
-</script>
-
->>>>>>> 87251e9004a355edc4b7bad28995b6ab5c03a096
 
 </head>
 <div id="item_list">
@@ -60,10 +47,10 @@ function fuga(str){
                 <div onclick="hoge(event)">
                 <div class="admin"><button type="button" name="hide:admin">ゲスト表示</button></div>
                 <div class="admin"><button type="button" name="show:admin">管理者表示</button></div>
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD
 =======
                 <div class="admin"><button type="button" name="hide">goodbye</button></div>
->>>>>>> 87251e9004a355edc4b7bad28995b6ab5c03a096
+>>>>>>> 87251e9004a355edc4b7bad28995b6ab5c03a096 -->
                 </div>
                 <!-- ラジオにしたい -->
     </div>
