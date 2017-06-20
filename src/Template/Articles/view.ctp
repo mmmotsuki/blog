@@ -7,7 +7,7 @@
 <body>
 <h1><?= h($article->title) ?></h1>
 <div class="button1">
-<input type="submit" value="編集" /><!-- ボタン作ってね -->
+    <div><button type="button" value="編集">編集</button></div>
 </div>
 <div><?= h($article->image) ?></div><--ここに画像上が出るように変えてね-->
 <div><?= h($article->body) ?></div>

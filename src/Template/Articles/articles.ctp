@@ -7,7 +7,6 @@
 
     <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
     <html lang="ja">
-    <head><title>sample</title>
     <meta http-equiv="Content-Style-Type" content="text/css">
     <meta http-equiv="Content-Script-Type" content="text/javascript">
 
