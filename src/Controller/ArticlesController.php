@@ -11,7 +11,6 @@ class ArticlesController extends AppController
         parent::initialize();
 
         $this->loadComponent('Flash'); // Include the FlashComponent
-        $this->loadModel('Comments');//ComenntsTable.php
     }
 
     public function index()
@@ -21,65 +20,8 @@ class ArticlesController extends AppController
 
     public function view($id)
     {
-        //$article = $this->Articles->get($id);
-        $article = $this->Articles->find('all')
-        ->contain(['Comments'])
-        //->where(['id'=>$id])
-        ->first();
-
-    //var_dump($article);
-
+        $article = $this->Articles->get($id);
         $this->set(compact('article'));
-    }
-
-    //コメント追加
-    public function addcomment()
-    {
-        $comment= $this->Comments->newEntity();
-        //CommentsはCommentsTable.phpのことを指す
-
-        //postデータを保存する
-        if ($this->request->is('post')) {
-
-            $comment = $this->Comments->patchEntity($comment, $this->request->getData());
-            //patchEntityは更新処理
-            $this->log($comment);
-            //var_dump($comment);
-
-            //保存する
-            if ($this->Comments->save($comment)) {
-                //saveする
-                //メッセージを表示
-                $this->Flash->success(__('Your article has been saved.'));
-                return $this->redirect(['action' => 'view',1]);
-                //redirect...飛び先 記事一覧
-                ///1のところは本来は動的で記事IDを入れるようにする
-            }
-            //しないなら
-            $this->Flash->error(__('Unable to add your article.'));
-        }
-
-        //postにデータを保存しないなら？
-        $this->set('comment', $comment);
-    }
-
-
-    //コメント編集
-    public function commentedit()
-    {
-        $commment = $this->Comments->get($id);
-        //for(あるだけ){
-            if ($this->request->is(['post', 'put'])) {
-                $this->Comments->patchEntity($article, $this->request->getData());
-                if ($this->Comments->save($comment)) {
-                    $this->Flash->success(__('Your article has been updated.'));
-                    return $this->redirect(['action' => 'view',1]);
-                }
-                $this->Flash->error(__('Unable to update your article.'));
-            }
-
-            $this->set('comment', $comment);
-        //}
     }
 
     public function add($id = null)

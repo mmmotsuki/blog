@@ -9,8 +9,6 @@ class ArticlesTable extends Table
     public function initialize(array $config)
     {
         $this->addBehavior('Timestamp');
-        $this->hasMany('Comments',['foreignKey' => 'articles_id']);
-
     }
 
     public function validationDefault(Validator $validator)
