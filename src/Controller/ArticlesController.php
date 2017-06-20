@@ -95,6 +95,16 @@ class ArticlesController extends AppController
                 // You could also do the following
                 //$newData = ['user_id' => $this->Auth->user('id')];
                 //$article = $this->Articles->patchEntity($article, $newData);
+
+                //file upload---(OTSUKI)-------
+                $filename = $this->request->data['upfile']['tmp_name'];
+                if (is_uploaded_file($filename)) {
+                    $dir = '\xampp\htdocs\blog\webroot\img\upload_file';
+                    $n = substr(strrchr($filename, '.'), 1);
+                    $upname = time() . '.png';    //拡張子の拡張
+                    move_uploaded_file($filename, $dir . DS . $upname);
+                }
+                //----------------------
                 if ($this->Articles->save($article)) {
                     $this->Flash->success(__('Your article has been saved.'));
                     return $this->redirect(['action' => 'index']);
@@ -105,8 +115,8 @@ class ArticlesController extends AppController
 
             // Just added the categories list to be able to choose
             // one category for an article
-            $categories = $this->Articles->Categories->find('treeList');
-            $this->set(compact('categories'));
+            // $categories = $this->Articles->Categories->find('treeList');
+            // $this->set(compact('categories'));
         }
         //記事編集の処理
         else {
