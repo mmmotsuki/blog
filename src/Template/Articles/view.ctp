@@ -20,7 +20,7 @@
         <textarea name="body" rows="5" placeholder="コメントの本文" maxlength="400"></textarea>
         <input type="hidden" name="articles_id" value="1">
 
-            <!-- 1は記事番号で、後に変数表示にして記事詳細ページに行く時に受け渡されるようにする）-->
+            <!-- 1は記事番号で、後に変数表示にして記事詳細ページに行く時に受け渡されるようにする?）-->
             <?=$this->Form->submit('投稿')?>
             <!--<imput>タグを使う submit = ???</imput> -->
 
@@ -51,6 +51,30 @@
     </div>
 </form>
 
-    <!--どこのコメント欄から来たかの情報を別に送信する必要がある -->
+<table border="1">
+<?php
+//配列の要素数を取得する関数かforeach文で回す
+//var_dump($article->comments[6]->body);
+//commentsはcakePHPで定義されている
+foreach($article->comments as $a){
+    echo"<tr>";
+    echo "<td>"."記事ID:".$a->id."</td>";
+    echo "<td>"."名前:".$a->name."</td>";
+    echo "<td>"."コメント内容:".$a->body."</td>";
+    echo "<td>"."パスワード(非表示):".$a->pass."</td>";
+    echo "<td>"."投稿日時:".$a->created."</td>"."<br>";
+    //テーブルかCSSでソートする
+    echo"<tr>";
+}
+?>
+</table>
+
+<!--
+    foreach($
+articles_idと等しいコメント内容を列挙してあるので
+
+コメントidの数だけ回すような処理を作ればいい
+==>
+</form>
 
     <!-- <input type="submit" value="編集" /> --> <!-- ボタン作ってね -->

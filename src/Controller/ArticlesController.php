@@ -23,13 +23,16 @@ class ArticlesController extends AppController
     {
         //$article = $this->Articles->get($id);
         $article = $this->Articles->find('all')
+        //find('all')は配列で結果を返します
+        //全部の情報を返すけどidと同じもので最初のものをarticleに入れる
         ->contain(['Comments'])
-        //->where(['id'=>$id])
+        ->where(['id'=>$id])
         ->first();
-
-    //var_dump($article);
+        //var_dump($article);
+        //$articleにコメント情報が入ってくる
 
         $this->set(compact('article'));
+        //setでarticleという変数を作っている
     }
 
     //コメント追加
