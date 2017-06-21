@@ -106,6 +106,7 @@ class ArticlesController extends AppController
                     $n = substr(strrchr($filename, '.'), 1);
                     $upname = time() . '.png';    //拡張子の拡張
                     move_uploaded_file($filename, $dir . DS . $upname);
+                    $article->upfile = $upname;
                 }
                 //----------------------
                 if ($this->Articles->save($article)) {
