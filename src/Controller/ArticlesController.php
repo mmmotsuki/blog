@@ -69,7 +69,7 @@ class ArticlesController extends AppController
 
     //コメント編集
     public function commentedit()
-    {
+   {/*
         $commment = $this->Comments->get($id);
         //for(あるだけ){
             if ($this->request->is(['post', 'put'])) {
@@ -83,7 +83,9 @@ class ArticlesController extends AppController
 
             $this->set('comment', $comment);
         //}
+                */
     }
+
 
     public function add($id = null)
     {
@@ -135,7 +137,9 @@ class ArticlesController extends AppController
 
             $this->set('article', $article);
         }
+
     }
+
 
 
     // public function edit($id = null)
