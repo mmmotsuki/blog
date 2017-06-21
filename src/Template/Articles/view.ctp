@@ -8,8 +8,8 @@
     </div>
     <!-- <div class="show">
         <?= $this->Form->button('編集', ['action'=>'add', "type"=>"botton", $article->id]); ?>
-    </div>
-<?php } ?> -->
+    </div> -->
+<?php } ?>
 <!-- /////////////////////////////// -->
 
 <h1><?= h($article->title) ?></h1>
