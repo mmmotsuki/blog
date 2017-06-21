@@ -523,9 +523,35 @@ table td {
     vertical-align: top;
     word-break: break-all;
 }
-.box1{
-      float : right
+.admin{
+      float : right;
+      margin: 10px;
 }
-.box2{
-     { float : left
-}　
+.left{
+      float : left;
+      /* ボタンのスタイル */
+
+margin:10px;
+padding:10px;
+border-radius: 3px;
+box-shadow: 1px 1px 3px 0px #f3f3f3;
+
+
+}
+/* float left解除 */
+.clear{clear:both;}
+
+.container {
+	width: 80%;			/*ブロックの幅を画面の80%にする設定。*/
+	max-width: 1000px;	/*上のwidth指定の追加設定。幅1000pxを最大幅に設定し、それ以上広げない。*/
+	margin: 0 auto;		/*HP画面の左右中央に表示させる設定*/
+}
+var{
+    width: 80%;			/*ブロックの幅を画面の80%にする設定。*/
+	max-width: 1000px;	/*上のwidth指定の追加設定。幅1000pxを最大幅に設定し、それ以上広げない。*/
+	margin: 0 auto;
+}
+
+var1{
+      float : right;
+}
