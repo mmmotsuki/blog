@@ -21,24 +21,29 @@
 <?php
 //var_dump($article->comments[6]->body);
 //comments(小文字のcでcomments)はcakePHPで定義されている文言
-foreach($article->comments as $a){
-    echo"<tr>";
-    echo "<td>"."記事ID:".$a->id."</td>";
-
-//それぞれのコメントの後ろに
-
-    echo "<td>"."名前:".$a->name."</td>";
-    echo "<td>"."コメント内容:".$a->body."</td>";
-    echo "<td>"."パスワード(非表示):".$a->pass."</td>";
-    echo "<td>"."投稿日時:".$a->created."</td>"."<br>";
-    //テーブルかCSSでソートする
-    echo"</tr>";
-}
-?>
+foreach($article->comments as $a):?>
+    <tr>
+    <td>コメントID:<?= $a->id?></td>
+<!-- それぞれのコメントの後ろに -->
+    <td>名前:<?=$a->name?></td>
+    <td>コメント内容:<?=$a->body?></td>
+    <td>パスワード(非表示):<?=$a->pass?></td>
+    <td>投稿日時:<?=$a->created?></td>
+    <td>
+    <form action="../com/<?=$a->id?>" method="post">
+    <?=$this->Form->submit('コメント編集')?>
+</form></td>
+    </tr>
+<?php endforeach?>
 </table>
+
+
 
     <form action="../view/1" method="post">
         <div class="button1">
             <?=$this->Form->submit('編集')?>
+            <!--ページ内容編集用のページ-->
+
+
         </div>
     </form>
