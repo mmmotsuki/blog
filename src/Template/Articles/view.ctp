@@ -13,9 +13,27 @@
 <!-- /////////////////////////////// -->
 
 <h1><?= h($article->title) ?></h1>
-<div><?= h($article->image) ?></div><!--ここに画像上が出るように変えてね-->
+
+<!-- 画像表示（上）（OTSUKI）-->
+<?php
+if($article->position == 'top') {
+    echo "<div>";
+    echo $this->Html->image($article->upfile);
+    echo "</div>";
+}
+?>
+
 <div><?= h($article->body) ?></div>
-<div><?= h($article->image) ?></div><!--ここに画像下が出るように変えてね-->
+
+<!-- 画像表示（下）（OTSUKI）-->
+<?php
+if($article->position == 'bottom') {
+    echo "<div>";
+    echo $this->Html->image($article->upfile);
+    echo "</div>";
+}
+?>
+
 <div><small>Created: <?= $article->created->format(DATE_RFC850) ?></small></div>
 <div><small>Edited: <?= $article->created->format(DATE_RFC850) ?></small></div><!--編集日時に変えてね-->
 

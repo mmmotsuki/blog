@@ -102,7 +102,7 @@ class ArticlesController extends AppController
                 //file upload---(OTSUKI)-------
                 $filename = $this->request->data['upfile']['tmp_name'];
                 if (is_uploaded_file($filename)) {
-                    $dir = '\xampp\htdocs\blog\webroot\img\upload_file';
+                    $dir = WWW_ROOT . DS . 'img';
                     $n = substr(strrchr($filename, '.'), 1);
                     $upname = time() . '.png';    //拡張子の拡張
                     move_uploaded_file($filename, $dir . DS . $upname);
