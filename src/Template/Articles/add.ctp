@@ -15,7 +15,7 @@
             <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
         </div>
         <div>
-            <?php echo $this->Form->reset(__('削除')); ?><!--ボタン変えて！関数探して-->
+            <?php echo $this->Form->reset(__('削除'), array('class' => 'reset')); ?><!--ボタン変えて！関数探して-->
         </div>
         <div>
             <?php echo $this->Form->radio('position',

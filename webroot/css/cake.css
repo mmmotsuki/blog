@@ -575,6 +575,12 @@ u{
 
 
 
+.reset{
+    padding: 1rem 2rem 1.0625rem 2rem;
+font-size: 1rem;
+background: #966600;
+color: #fff;
+}
 
 /*今使ってない↓*/
 .clear{clear:both;}
