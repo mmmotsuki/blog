@@ -1,3 +1,17 @@
+
+<!-- ログイン時のみ記事編集ボタン表示 (OTSUKI) -->
+<?php if(!empty( $auth )) { ?>
+    <div>
+    <!-- ※ボタンによる操作が上手くできないので、現状リンクです -->
+    <?= $this->Html->link('編集', ['action' => 'add', $article->id])
+    ?>
+    </div>
+    <!-- <div class="show">
+        <?= $this->Form->button('編集', ['action'=>'add', "type"=>"botton", $article->id]); ?>
+    </div>
+<?php } ?> -->
+<!-- /////////////////////////////// -->
+
 <h1><?= h($article->title) ?></h1>
 <div><?= h($article->image) ?></div><!--ここに画像上が出るように変えてね-->
 <div><?= h($article->body) ?></div>
