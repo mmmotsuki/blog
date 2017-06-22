@@ -11,11 +11,14 @@
 
     <div class="button1">
         <?php echo $this->Form->control('body', ['rows' => '5']); ?>
+
     </div>
-        <var>
-            <?php echo $this->Form->button(__('編集')); ?>
-        </var>
-        <var>
-            <?php echo $this->Form->button(__('削除')); ?>
-        </var>
-</div>
+    <div class="rap_buttons">
+            <div>
+                <?php echo $this->Form->button(__('編集')); ?>
+            </div>
+            <div class="right">
+                <?php echo $this->Form->button(__('削除')); ?>
+            </div>
+        </div>
+    </div>
