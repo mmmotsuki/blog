@@ -84,10 +84,10 @@ function password(id, pass){
         document.body.appendChild(form);
         var input = document.createElement('input');
         input.setAttribute('type', 'hidden');
-        input.setAttribute('id', 'id');
-        input.setAttribute('value', 'value');
+        input.setAttribute('name', 'pass');
+        input.setAttribute('value', id);
         form.appendChild(input);
-        form.setAttribute('action', '../commentedit');
+        form.setAttribute('action', '../editcomment/' + id);
         form.setAttribute('method', 'post');
         form.submit();
 	}
