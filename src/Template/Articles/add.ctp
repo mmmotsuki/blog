@@ -15,7 +15,7 @@
         </div>
 <!--ここから松元変更しました-->
         <div>
-            <input type="file" id="file1">
+            <?php echo $this->Form->file('upfile', array('id' => 'file1', 'accept' => "image/jpeg, image/png")); ?>
             <script type="text/javascript" language="javascript">
 
                 function hoge() {
