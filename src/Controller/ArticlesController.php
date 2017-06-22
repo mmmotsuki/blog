@@ -64,27 +64,42 @@ class ArticlesController extends AppController
 
         //postにデータを保存しないなら？
         $this->set('comment', $comment);
+        //editcommentにある$commentと'comment'が
     }
-
 
     //コメント編集
-    public function commentedit()
-   {/*
-        $commment = $this->Comments->get($id);
-        //for(あるだけ){
-            if ($this->request->is(['post', 'put'])) {
-                $this->Comments->patchEntity($article, $this->request->getData());
-                if ($this->Comments->save($comment)) {
-                    $this->Flash->success(__('Your article has been updated.'));
-                    return $this->redirect(['action' => 'view',1]);
-                }
-                $this->Flash->error(__('Unable to update your article.'));
-            }
+    public function editcomment($id = null)
+     {
+          $comment = $this->Comments->get($id);
+          //for(あるだけ){
+              if ($this->request->is(['post', 'put'])) {
+                  $this->Comments->patchEntity($comment, $this->request->getData());
+                  if ($this->Comments->save($comment)) {
+                      $this->Flash->success(__('Your article has been updated.'));
+                      return $this->redirect(['action' => 'view',1]);
+                  }
+                  $this->Flash->error(__('Unable to update your article.'));
+              }
 
-            $this->set('comment', $comment);
-        //}
-                */
-    }
+              $this->set('comment', $comment);
+          //}
+      }//更新された後は記事詳細ページに戻る
+
+
+
+
+      public function deletecomment($id)
+      {
+          $this->request->allowMethod(['post', 'delete']);
+
+          $article = $this->Articles->get($id);
+          if ($this->Articles->delete($article)) {
+              $this->Flash->success(__('The article with id: {0} has been deleted.', h($id)));
+              return $this->redirect(['action' => 'index']);
+          }
+      }
+
+
 
 
     public function add($id = null)
@@ -104,11 +119,10 @@ class ArticlesController extends AppController
                 //file upload---(OTSUKI)-------
                 $filename = $this->request->data['upfile']['tmp_name'];
                 if (is_uploaded_file($filename)) {
-                    $dir = WWW_ROOT . DS . 'img';
+                    $dir = '\xampp\htdocs\blog\webroot\img\upload_file';
                     $n = substr(strrchr($filename, '.'), 1);
                     $upname = time() . '.png';    //拡張子の拡張
                     move_uploaded_file($filename, $dir . DS . $upname);
-                    $article->upfile = $upname;
                 }
                 //----------------------
                 if ($this->Articles->save($article)) {
@@ -127,7 +141,7 @@ class ArticlesController extends AppController
         //記事編集の処理
         else {
             $article = $this->Articles->get($id);
-            if ($this->request->is(['post', 'put'])) {
+            if ($this->request->is(['post', 'put'])) { //1回目は投稿ボタンが押されてない=postされてないのでスルー)
                 $this->Articles->patchEntity($article, $this->request->getData());
                 if ($this->Articles->save($article)) {
                     $this->Flash->success(__('Your article has been updated.'));
@@ -140,8 +154,6 @@ class ArticlesController extends AppController
         }
 
     }
-
-
 
     // public function edit($id = null)
     // {
@@ -188,6 +200,4 @@ class ArticlesController extends AppController
         return parent::isAuthorized($user);
     }
 }
-
-
 ?>
