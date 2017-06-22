@@ -64,7 +64,8 @@ foreach($article->comments as $a):?>
     <td>パスワード(非表示):<?=$a->pass?></td>
     <td>投稿日時:<?=$a->created?></td>
     <td>
-    <form action="../commentedit" method="post">
+    <form action="../editcomment" method="post">
+    <input type="button" value="入力ダイアログ" onClick="password(<?= $a->id ?>, '<?=$a->pass?>')">
     <?=$this->Form->submit('コメント編集')?>
 </form></td>
     </tr>
@@ -72,12 +73,37 @@ foreach($article->comments as $a):?>
 </table>
 
 
+<script type="text/javascript">
+<!--
 
-    <form action="../view/1" method="post">
-        <div class="button1">
-            <?=$this->Form->submit('編集')?>
-            <!--ページ内容編集用のページ-->
+function password(id, pass){
+	p = window.prompt("パスワードを入力してください", "");
 
+	if(p == pass) {
+        window.alert('ok');
 
-        </div>
-    </form>
+        var form = document.createElement('form');
+        document.body.appendChild(form);
+        var input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('id', 'id');
+        input.setAttribute('value', 'value');
+        form.appendChild(input);
+        form.setAttribute('action', '../commentedit');
+        form.setAttribute('method', 'post');
+        form.submit();
+
+	}
+	else if(p != "" && p != null) {
+		window.alert('パスワードが違います');
+	}
+	else {
+		window.alert('キャンセルされました');
+	}
+}
+
+// -->
+</script>
+
+</div>
+</form>
