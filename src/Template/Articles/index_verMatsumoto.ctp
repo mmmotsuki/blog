@@ -1,4 +1,4 @@
-<!-- File: src/Template/Articles/index.ctp -->
+<!-- File: src/Template/Articles/add.ctp -->
 
 <?php
   if(!empty( $auth )){
@@ -23,7 +23,7 @@
     　for(var i=0, d; d=div[i++];)
     　　if(d.className){
     　　　var reg = new RegExp("(^|:)" + d.className + "(:|$)");
-    　　　d.style.display = reg.test(str)?"block":"none";
+    　　　d.style.display = reg.test(str)?"":"none";
     　　}
     }
 
@@ -73,24 +73,25 @@
 <?php
   }else{
 ?>
-        <!--未ログイン時の処理-->
+<!--未ログイン時の処理-->
 <div class="container">
-                <!-- <ui>Id</ui>
-                <ui>Titleタイトル</ui>
-                <ui>Created日時</ui>
-                <div class="show">Actions編集、削除</div> -->
+        <!-- <ui>Id</ui>
+        <ui>Titleタイトル</ui>
+        <ui>Created日時</ui>
+        <div class="show">Actions編集、削除</div> -->
 
-        <!-- ここで $articles クエリオブジェクトをループして、投稿情報を表示 -->
-
+<!-- ここで $articles クエリオブジェクトをループして、投稿情報を表示 -->
     <?php foreach ($articles as $article): ?>
     <div>
-        <ui><?= $article->id ?></ui>
-        <ui>
+        <div class="cell">
+            <?= $article->id ?>
+        </div>
+        <div class="cell">
             <?= $this->Html->link($article->title, ['action' => 'view', $article->id]) ?>
-        </ui>
-        <ui>
+        </div>
+        <div class="cell">
             <?= $article->created->format(DATE_RFC850) ?>
-        </ui>
+        </div>
     </div>
     <?php endforeach; ?>
 </div>

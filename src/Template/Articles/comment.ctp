@@ -14,6 +14,7 @@
             <?php echo $this->Form->button(__('投稿')); ?>
         </var>
         <var1>
+        <!--↑これ大丈夫だっけ？-->
             <?php echo $this->Form->button(__('編集')); ?>
         </var>
 </div>

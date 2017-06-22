@@ -12,14 +12,19 @@
             <?php echo $this->Form->control('body', ['rows' => '3']); ?><!--bodyいじるとアラートでなくなる-->
         </div>
         <div>
-            <?php echo $this->Form->file('upfile'); ?><!--ボタン変えて！関数探して-->
+            <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
         </div>
         <div>
-            <?php echo $this->Form->button(__('削除')); ?><!--ボタン変えて！関数探して-->
+            <?php echo $this->Form->reset(__('削除')); ?><!--ボタン変えて！関数探して-->
         </div>
         <div>
-            <input type="radio" name="sex" value="image"checked> 画像上
-            <input type="radio" name="sex" value="image">画像下
+            <?php echo $this->Form->radio('position',
+                [
+                    ['value' => 'top', 'text' => '上'],
+                    ['value' => 'bottom', 'text' => '下']
+                ]); ?>
+            <!-- <input type="radio" name="position" value="top" checked> 画像上
+            <input type="radio" name="position" value="bottom">画像下 -->
         </div>
         <div>
             <?php echo $this->Form->button(__('投稿')); ?>
