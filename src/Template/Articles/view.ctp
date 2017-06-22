@@ -55,14 +55,16 @@ if($article->position == 'bottom') {
 //comments(小文字のcでcomments)はcakePHPで定義されている文言
 foreach($article->comments as $a):?>
     <tr>
-    <td>コメントID:<?= $a->id?></td>
+        <td>
+
+    <!--<td>コメントID:<? $a->id?></td>-->
 <!-- それぞれのコメントの後ろに -->
     <td>名前:<?=$a->name?></td>
     <td>コメント内容:<?=$a->body?></td>
     <td>パスワード(非表示):<?=$a->pass?></td>
     <td>投稿日時:<?=$a->created?></td>
     <td>
-    <form action="../com/<?=$a->id?>" method="post">
+    <form action="../commentedit" method="post">
     <?=$this->Form->submit('コメント編集')?>
 </form></td>
     </tr>
