@@ -80,8 +80,6 @@ function password(id, pass){
 	p = window.prompt("パスワードを入力してください", "");
 
 	if(p == pass) {
-        window.alert('ok');
-
         var form = document.createElement('form');
         document.body.appendChild(form);
         var input = document.createElement('input');
@@ -92,7 +90,6 @@ function password(id, pass){
         form.setAttribute('action', '../commentedit');
         form.setAttribute('method', 'post');
         form.submit();
-
 	}
 	else if(p != "" && p != null) {
 		window.alert('パスワードが違います');
