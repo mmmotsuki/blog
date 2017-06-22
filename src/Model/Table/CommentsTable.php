@@ -27,13 +27,15 @@ class CommentsTable extends Table
             //->requirePresence('articles_id')
 
             ->notEmpty('body')
-            ->requirePresence('body')
+            ->requirePresence('body') //記事内容
 
             ->notEmpty('name')
-            ->requirePresence('name')
+            ->requirePresence('name') //
 
             ->notEmpty('pass')
             ->requirePresence('pass');
+
+
 
         return $validator;
     }
