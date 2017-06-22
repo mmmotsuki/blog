@@ -13,9 +13,9 @@
         <?php echo $this->Form->control('body', ['rows' => '5']); ?>
     </div>
         <var>
-            <?php echo $this->Form->button(__('投稿')); ?>
-        </var>
-        <var1>
             <?php echo $this->Form->button(__('編集')); ?>
+        </var>
+        <var>
+            <?php echo $this->Form->button(__('削除')); ?>
         </var>
 </div>
