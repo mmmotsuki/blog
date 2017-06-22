@@ -1,5 +1,6 @@
 <!-- File: src/Template/Articles/add.ctp -->
 <body>
+<h1>Add Article</h1>
     <div>
         <div>
             <?php echo $this->Form->create($article, array('type' => 'file')); ?>
@@ -11,30 +12,20 @@
             <?php echo $this->Form->control('body', ['rows' => '3']); ?><!--bodyいじるとアラートでなくなる-->
         </div>
         <div>
-            <!-- <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?> -->
+            <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
         </div>
-<!--ここから松元変更しました-->
         <div>
-            <input type="file" id="file1">
-            <script type="text/javascript" language="javascript">
-
-                function hoge() {
-                    document.getElementById("file1").value="";
-                }
-            </script>
-            <input type="button" id="clear" value="消去" onClick="hoge()" />
+            <?php echo $this->Form->reset(__('削除'),array("class" =>'reset')); ?>
         </div>
-
-<!--ここまで松元変更しました-->
         <div style="display:inline-flex">
             <?php echo $this->Form->radio('position',
                 [
-                    ['value' => 'top', 'text' => '上 　'],
+                    ['value' => 'top', 'text' => '上　'],
                     ['value' => 'bottom', 'text' => '下']
                 ]); ?>
-        </div>
             <!-- <input type="radio" name="position" value="top" checked> 画像上
             <input type="radio" name="position" value="bottom">画像下 -->
+        </div>
         <div>
             <?php echo $this->Form->button(__('投稿')); ?>
         </div>
