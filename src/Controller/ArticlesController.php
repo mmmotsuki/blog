@@ -64,27 +64,28 @@ class ArticlesController extends AppController
 
         //postにデータを保存しないなら？
         $this->set('comment', $comment);
+        //editcommentにある$commentと'comment'が
     }
 
 
     //コメント編集
-    public function commentedit()
-   {/*
-        $commment = $this->Comments->get($id);
-        //for(あるだけ){
-            if ($this->request->is(['post', 'put'])) {
-                $this->Comments->patchEntity($article, $this->request->getData());
-                if ($this->Comments->save($comment)) {
-                    $this->Flash->success(__('Your article has been updated.'));
-                    return $this->redirect(['action' => 'view',1]);
-                }
-                $this->Flash->error(__('Unable to update your article.'));
-            }
+    public function editcomment($id = null)
+     {
+          $comment = $this->Comments->get($id);
+          //for(あるだけ){
+              if ($this->request->is(['post', 'put'])) {
+                  $this->Comments->patchEntity($article, $this->request->getData());
+                  if ($this->Comments->save($comment)) {
+                      $this->Flash->success(__('Your article has been updated.'));
+                      return $this->redirect(['action' => 'view',1]);
+                  }
+                  $this->Flash->error(__('Unable to update your article.'));
+              }
 
-            $this->set('comment', $comment);
-        //}
-                */
-    }
+              $this->set('comment', $comment);
+          //}
+
+      }
 
 
     public function add($id = null)
@@ -104,11 +105,10 @@ class ArticlesController extends AppController
                 //file upload---(OTSUKI)-------
                 $filename = $this->request->data['upfile']['tmp_name'];
                 if (is_uploaded_file($filename)) {
-                    $dir = WWW_ROOT . DS . 'img';
+                    $dir = '\xampp\htdocs\blog\webroot\img\upload_file';
                     $n = substr(strrchr($filename, '.'), 1);
                     $upname = time() . '.png';    //拡張子の拡張
                     move_uploaded_file($filename, $dir . DS . $upname);
-                    $article->upfile = $upname;
                 }
                 //----------------------
                 if ($this->Articles->save($article)) {
