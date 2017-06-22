@@ -36,7 +36,7 @@ class ArticlesController extends AppController
     }
 
     //コメント追加
-    public function addcomment()
+    public function addcomment($id = null)
     {
         $comment= $this->Comments->newEntity();
         //CommentsはCommentsTable.phpのことを指す
@@ -68,8 +68,11 @@ class ArticlesController extends AppController
 
 
     //コメント編集
-    public function commentedit()
+    public function editcomment($id = null)
    {/*
+       //
+
+
         $commment = $this->Comments->get($id);
         //for(あるだけ){
             if ($this->request->is(['post', 'put'])) {
@@ -85,6 +88,18 @@ class ArticlesController extends AppController
         //}
                 */
     }
+
+    public function commentdelete($id)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+
+        $article = $this->Articles->get($id);
+        if ($this->Articles->delete($article)) {
+            $this->Flash->success(__('The article with id: {0} has been deleted.', h($id)));
+            return $this->redirect(['action' => 'index']);
+        }
+    }
+
 
 
     public function add($id = null)
