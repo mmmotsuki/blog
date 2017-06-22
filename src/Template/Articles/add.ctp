@@ -14,13 +14,13 @@
         <div>
             <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
         </div>
-        <div>
-            <?php echo $this->Form->reset(__('削除')); ?><!--ボタン変えて！関数探して-->
+        <var>
+            <?php echo $this->Form->reset(__('削除'),array("class" =>'reset')); ?>
         </div>
-        <div>
+        <div style="display:inline-flex">
             <?php echo $this->Form->radio('position',
                 [
-                    ['value' => 'top', 'text' => '上'],
+                    ['value' => 'top', 'text' => '上　'],
                     ['value' => 'bottom', 'text' => '下']
                 ]); ?>
             <!-- <input type="radio" name="position" value="top" checked> 画像上
