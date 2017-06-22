@@ -85,7 +85,7 @@
 
 <!-- ここで $articles クエリオブジェクトをループして、投稿情報を表示 -->
     <?php foreach ($articles as $article): ?>
-    <div>
+    <div class="box1">
         <div class="cell">
             <?= $article->id ?>
         </div>
