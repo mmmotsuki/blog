@@ -55,7 +55,7 @@ if($article->position == 'bottom') {
 //comments(小文字のcでcomments)はcakePHPで定義されている文言
 foreach($article->comments as $a):?>
     <tr>
-        <td> 
+        <td>
 
     <!--<td>コメントID:<? $a->id?></td>-->
 <!-- それぞれのコメントの後ろに -->
@@ -65,6 +65,7 @@ foreach($article->comments as $a):?>
     <td>投稿日時:<?=$a->created?></td>
     <td>
     <form action="../editcomment" method="post">
+    <input type="button" value="入力ダイアログ" onClick="password(<?= $a->id ?>, '<?=$a->pass?>')">
     <?=$this->Form->submit('コメント編集')?>
 </form></td>
     </tr>
@@ -72,12 +73,34 @@ foreach($article->comments as $a):?>
 </table>
 
 
+<script type="text/javascript">
+<!--
 
-    <form action="../view/1" method="post">
-        <div class="button1">
-            <?=$this->Form->submit('編集')?>
-            <!--ページ内容編集用のページ-->
+function password(id, pass){
+	p = window.prompt("パスワードを入力してください", "");
 
+	if(p == pass) {
+        var form = document.createElement('form');
+        document.body.appendChild(form);
+        var input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', 'pass');
+        input.setAttribute('value', id);
+        form.appendChild(input);
+        form.setAttribute('action', '../editcomment/' + id);
+        form.setAttribute('method', 'post');
+        form.submit();
+	}
+	else if(p != "" && p != null) {
+		window.alert('パスワードが違います');
+	}
+	else {
+		window.alert('キャンセルされました');
+	}
+}
 
-        </div>
-    </form>
+// -->
+</script>
+
+</div>
+</form>

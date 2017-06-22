@@ -530,6 +530,7 @@ table td {
 	width: 80%;			/*ブロックの幅を画面の80%にする設定。*/
 	max-width: 1000px;	/*上のwidth指定の追加設定。幅1000pxを最大幅に設定し、それ以上広げない。*/
 	margin: 0 auto;		/*HP画面の左右中央に表示させる設定*/
+
 }
 /*ここまで全体で利用*/
 
@@ -540,17 +541,25 @@ table td {
 }
 .left{
       float : left;
-      /* ボタンのスタイル */
+      border:solid 5px #966600;
+
 
 margin:10px;
 padding:10px;
 border-radius: 3px;
 box-shadow: 1px 1px 3px 0px #f3f3f3;
-
-
+}
+.box1{
+    border: solid 5px  #966600;
+    margin:20px;
 }
 .cell {
     display:table-cell;
+    margin:20px;
+    padding:15px;
+
+
+    /*line-height: 10px;*/
 }
 
 /*ここまでindex.ctp*/
@@ -565,6 +574,10 @@ var{
 var1{
       float : right;
 }
+/*var:nth-child(2){
+      float : right;
+}*/
+
 /*ここまでcomment.ctp*/
 u{
       float : left;
@@ -572,6 +585,23 @@ u{
       padding:50px;
 }
 
+
+
+
+/*ここまでcheck.ctp*/
+#clear{
+    padding:1rem 2rem 1.0625rem 2rem;
+    font-size:1rem;
+    background:#966600;
+    color: #fff;
+}
+
+/*ここまでadd.ctp*/
+
+
+
+
+/*ここまでlayout.ctp*/
 
 
 
