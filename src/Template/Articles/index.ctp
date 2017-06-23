@@ -22,7 +22,7 @@
     　　if(d.className){
     　　　var reg = new RegExp("(^|:)" + d.className + "(:|$)");
     　　　d.style.display = reg.test(str)?"":"none";
-            d.style.border = "none";
+            // d.style.border = "none";
     　　}
     }
 
