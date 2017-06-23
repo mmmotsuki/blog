@@ -12,7 +12,7 @@
 
 <!-- 画像表示（上）（OTSUKI）-->
 <?php
-if($article->position == 'top') {
+if(!empty($article->upfile) && $article->position == 'top') {
     echo "<div>" . $this->Html->image($article->upfile) . "</div>";
 }
 ?>
@@ -21,13 +21,19 @@ if($article->position == 'top') {
 
 <!-- 画像表示（下）（OTSUKI）-->
 <?php
-if($article->position == 'bottom') {
+if(!empty($article->upfile) && $article->position == 'bottom') {
     echo "<div>" . $this->Html->image($article->upfile) . "</div>";
 }
 ?>
 
 <div><small>Created: <?= $article->created->format(DATE_RFC850) ?></small></div>
-<div><small>Edited: <?= $article->modified->format(DATE_RFC850) ?></small></div>
+<div>
+    <?php
+    if($article->created->format(DATE_RFC850) !== $article->modified->format(DATE_RFC850)) {
+        echo "<small>Edited:" . $article->modified->format(DATE_RFC850) . "</small>";
+    }
+    ?>
+</div>
 </fieldset>
 
 <fieldset>
@@ -59,12 +65,17 @@ if($article->position == 'bottom') {
     //var_dump($article->comments[6]->body);
     //comments(小文字のcでcomments)はcakePHPで定義されている文言
     foreach($article->comments as $a):
-        echo "<tr>";
+        echo "<tr style='width:50px'>";
         echo "<td>No. " . $no . "</td>";
         echo "<td>名前:" . $a->name . "</td>";
         echo "<td>コメント内容:" . $a->body . "</td>";
         echo "<td>パスワード:" . $a->pass . "</td>";
-        echo "<td>投稿日時:" . $a->created . "</td>";
+        echo "<td>投稿日時:" . $a->created->format(DATE_RFC850) . "</td>";
+        echo "<td>";
+        if($a->created->format(DATE_RFC850) !== $a->modified->format(DATE_RFC850)) {
+            echo "投稿日時:" . $a->modified->format(DATE_RFC850);
+        }
+        echo "</td>";
         $no++;
     ?>
     <!-- <form action="../editcomment" method="post"> -->
