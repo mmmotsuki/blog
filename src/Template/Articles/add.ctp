@@ -24,7 +24,7 @@
                     document.getElementById("file1").value="";
                 }
                 function upfile_changeHandler(e){
-                    alert('世界の中心で愛を叫ぶ');
+                    // alert('世界の中心で愛を叫ぶ');
                     var files = e.target.files;
                     var fileData = "";
                     for(var i = 0; i < files.length; i++){
@@ -34,7 +34,7 @@
                         // 'ファイルサイズ：' + fileVal.size + ' バイト<br>' +
                         // 'MIMEタイプ：' + fileVal.type + '<br>' +
                         // '最終更新日時：' + fileVal.lastModifiedDate + '<hr>';
-                        alert(fileVal.type);
+                        // alert(fileVal.type);
                 }
     $('#info').innerHTML = fileData;
 }
@@ -62,11 +62,11 @@ function $(id) {
                     ['value' => 'top', 'text' => '上 　'],
                     ['value' => 'bottom', 'text' => '下']
                 ]
-            , $attributes,['id' => 'undefine']); ?>
+            , $attributes,['id' => 'undefineまだ']); ?>
         </div>
             <!-- <input type="radio" name="position" value="top" checked> 画像上
             <input type="radio" name="position" value="bottom">画像下 -->
-        <div id=>
+        <div id=まだ>
             <?php echo $this->Form->button(__('投稿')); ?>
         </div>
     </div>
