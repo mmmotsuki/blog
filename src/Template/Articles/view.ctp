@@ -1,9 +1,3 @@
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
-
-<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.css' />
-<script src='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js'></script>
-
 <h1>
     <fieldset>
     <legend>
@@ -12,16 +6,14 @@
 </h1>
 <!-- ログイン時のみ記事編集ボタン表示 (OTSUKI) -->
 <?php if(!empty( $auth )) {
-    echo "<div id=right1>" . $this->Html->link('編集', ['action' => 'add', $article->id]) . "</div>";
+    echo "<div>" . $this->Html->link('編集', ['action' => 'add', $article->id]) . "</div>";
 }
 ?>
 
 <!-- 画像表示（上）（OTSUKI）-->
 <?php
 if($article->position == 'top') {
-    echo "<div>" . "<a href='/blog/img/". $article->upfile . "' data-lity='data-lity'>";
-    echo "<img src='/blog/img/". $article->upfile . "' width='320px' />";
-    echo "</a>" . "</div>";
+    echo "<div>" . $this->Html->image($article->upfile) . "</div>";
 }
 ?>
 
@@ -30,44 +22,36 @@ if($article->position == 'top') {
 <!-- 画像表示（下）（OTSUKI）-->
 <?php
 if($article->position == 'bottom') {
-    echo "<div>" .  "<a href='/blog/img/". $article->upfile . "' data-lity='data-lity'>";
-    echo "<img src='/blog/img/". $article->upfile . "' width='320px' />";
-    echo "</a>" . "</div>";
+    echo "<div>" . $this->Html->image($article->upfile) . "</div>";
 }
 ?>
 
 <div><small>Created: <?= $article->created->format(DATE_RFC850) ?></small></div>
-<div>
-    <?php
-    if($article->created->format(DATE_RFC850) !== $article->modified->format(DATE_RFC850)) {
-        echo "<small>Edited:" . $article->modified->format(DATE_RFC850) . "</small>";
-    }
-    ?>
-</div>
+<div><small>Edited: <?= $article->modified->format(DATE_RFC850) ?></small></div>
 </fieldset>
 
 <fieldset>
     <legend>
         <?= __('Please enter your name , comment and password'); ?>
     </legend>
-<form action="../addcomment" method="post">
-    <div>Name <span style="color:red">*</span>
-                <input type="text" name="name" maxlength="10" required>
-            </div>
-            <div>Comment <span style="color:red">*</span>
-                <textarea name="body" rows="5" maxlength="400" required></textarea>
-            </div>
-            <div>Password <span style="color:red">*</span>
-                <input type="password" name="pass" value=""maxlength="10" required>
-            </div>
-            <div class="button1">
-                <?php
-                echo "<input type='hidden' name='articles_id' value=" . $article->id . ">";
-                echo $this->Form->submit('投稿');
-                ?>
-            </div>
-        </form>
-    </fieldset>
+    <form action="../addcomment" method="post">
+        <div>Name <span style="color:red">*</span>
+            <input type="text" name="name" maxlength="10" required>
+        </div>
+        <div>Comment <span style="color:red">*</span>
+            <textarea name="body" rows="5" maxlength="400" required></textarea>
+        </div>
+        <div>Password <span style="color:red">*</span>
+            <input type="password" name="pass" value=""maxlength="10" required>
+        </div>
+        <div class="button1">
+            <?php
+            echo "<input type='hidden' name='articles_id' value=" . $article->id . ">";
+            echo $this->Form->submit('投稿');
+            ?>
+        </div>
+    </form>
+</fieldset>
 
 <table border="1">
     <?php
