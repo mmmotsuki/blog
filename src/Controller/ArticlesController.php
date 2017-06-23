@@ -69,6 +69,7 @@ class ArticlesController extends AppController
 
     //コメント編集
     public function editcomment($id = null)
+
     {
         if ($this->request->is(['post', 'put'])) {
             $comment = $this->Comments->get($id);

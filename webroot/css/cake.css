@@ -1,4 +1,4 @@
-.disabled a,
+/*.disabled a,
 a.disabled {
     pointer-events: none;
 }
@@ -9,7 +9,9 @@ a:hover {
 
 a {
     color: #1798A5;
-}
+}*/
+
+
 
 .side-nav li a:not(.button) {
     color: #15848F;
@@ -479,11 +481,7 @@ div.message.hidden {
     padding: 2rem;
 }
 
-/* Use 'one true layout' methods to get equal height columns */
-.container {
-    overflow: hidden;
-    min-height: 92%; /* full height almost always */
-}
+
 
 /* Force equal height by overflowing */
 .content,
@@ -525,29 +523,31 @@ table td {
 }
 /*-------------------------------------------------------------------------------*/
 /*ここからまついち記入したよ*/
+/* Use 'one true layout' methods to get equal height columns */
 
 .container {
 	width: 80%;			/*ブロックの幅を画面の80%にする設定。*/
 	max-width: 1000px;	/*上のwidth指定の追加設定。幅1000pxを最大幅に設定し、それ以上広げない。*/
 	margin: 0 auto;		/*HP画面の左右中央に表示させる設定*/
-
+    overflow: hidden;
+    min-height: 92%; /* full height almost always */
 }
+
 /*ここまで全体で利用*/
 
 
 .admin{
-      float : right;
+      float : right;/*右寄せ*/
       margin: 10px;
 }
+
 .left{
-      float : left;
+      float : left;/*左寄せ*/
       border:solid 5px #966600;
-
-
-margin:10px;
-padding:10px;
-border-radius: 3px;
-box-shadow: 1px 1px 3px 0px #f3f3f3;
+      margin:10px;
+      padding:10px;
+      border-radius: 3px;
+      box-shadow: 1px 1px 3px 0px #f3f3f3;
 }
 .box1{
     border: solid 5px  #966600;
@@ -571,8 +571,8 @@ var{
 	margin: 0 auto;
 }
 
-.right{
-      float : right;
+.button_right{
+       margin-left:319px;
 }
 
 
@@ -597,10 +597,33 @@ u{
     color: #fff;
 }
 
+.hide{
+     visibility : hidden;
+}
+#file1{
+
+    padding:10px;
+    padding-left:0px;
+    padding-right:0px;
+}
 /*ここまでadd.ctp*/
 
-
-
+#button2{
+    float : left;/*左寄せ*/
+    border:solid 5px #966600;
+    margin:10px;
+    padding:10px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px 0px #f3f3f3;
+}
+#iphone{
+      float : right;/*右寄せ*/
+      border:solid 5px #966600;
+      margin:10px;
+      padding:10px;
+      border-radius: 3px;
+      box-shadow: 1px 1px 3px 0px #f3f3f3;
+/*ここまでview.ctp*/
 
 /*ここまでlayout.ctp*/
 

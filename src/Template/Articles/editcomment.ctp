@@ -11,13 +11,15 @@
 
     <div class="button1">
         <?php echo $this->Form->control('body', ['rows' => '5']); ?>
+
     </div>
-        <var>
-            <?php echo $this->Form->button(__('編集'), ['name' => 'edit']); ?>
-        </var>
-        <var>
-            <?= $this->Html->link('削除',
-                ['action' => 'deletecomment', 'onclick' => "return confirm('削除します')", $comment->id])
-            ?>
-        </var>
-</div>
+    <div class="rap_buttons">
+            <div>
+                <?php echo $this->Form->button(__('編集'), ['name' => 'edit']); ?>
+            </div>
+            <div class="right">
+                <?= $this->Html->link('削除',['action' => 'deletecomment', 'onclick' => "return confirm('削除します')", $comment->id],['id' => 'iphone'])
+                ?>
+            </div>
+        </div>
+    </div>
