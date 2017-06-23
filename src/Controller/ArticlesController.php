@@ -70,21 +70,26 @@ class ArticlesController extends AppController
     //コメント編集
     public function editcomment($id = null)
     {
-        $comment = $this->Comments->get($id);
-        if (isset($_POST['edit'])) {
-            $this->Comments->patchEntity($comment, $this->request->data(), ['validate' => false]);
-            if(!empty($comment->errors())) {
-                 $this->Flash->error('varidation error');
-            } else {
-                if ($this->Comments->save($comment)) {
-                    $this->Flash->success(__('Your comment has been updated.'));
-                    return $this->redirect(['action' => 'view', $comment->articles_id]);
+        if ($this->request->is('post')) {
+            $comment = $this->Comments->get($id);
+            if (isset($_POST['edit'])) {
+                $this->Comments->patchEntity($comment, $this->request->data(), ['validate' => false]);
+                if(!empty($comment->errors())) {
+                     $this->Flash->error('varidation error');
+                } else {
+                    if ($this->Comments->save($comment)) {
+                        $this->Flash->success(__('Your comment has been updated.'));
+                        return $this->redirect(['action' => 'view', $comment->articles_id]);
+                    }
+                    $this->Flash->error(__('Unable to update your comment.'));
                 }
-                $this->Flash->error(__('Unable to update your comment.'));
             }
+            $this->set('comment', $comment);
         }
-        $this->set('comment', $comment);
-      }//更新された後は記事詳細ページに戻る
+        else {
+            return $this->redirect(['action' => 'index']);
+        }
+    }//更新された後は記事詳細ページに戻る
 
     public function deletecomment($id)
     {
@@ -92,9 +97,9 @@ class ArticlesController extends AppController
         if ($this->Comments->delete($comment)) {
             $this->Flash->success(__('The comment with id: {0} has been deleted.', h($id)));
             return $this->redirect(['action' => 'view', $comment->articles_id]);
-          }
-          $this->Flash->error(__('could not delete.'));
-      }
+        }
+        $this->Flash->error(__('could not delete.'));
+    }
 
     //   $this->request->allowMethod(['post', 'delete']);
       //
@@ -148,6 +153,16 @@ class ArticlesController extends AppController
             $article = $this->Articles->get($id);
             if ($this->request->is(['post', 'put'])) { //1回目は投稿ボタンが押されてない=postされてないのでスルー)
                 $this->Articles->patchEntity($article, $this->request->getData());
+                //file upload---(OTSUKI)-------
+                $filename = $this->request->data['upfile']['tmp_name'];
+                if (is_uploaded_file($filename)) {
+                    $dir = WWW_ROOT . DS . 'img';
+                    $n = substr(strrchr($filename, '.'), 1);
+                    $upname = time() . '.png';    //拡張子の拡張
+                    move_uploaded_file($filename, $dir . DS . $upname);
+                    $article->upfile = $upname;
+                }
+                //----------------------
                 if ($this->Articles->save($article)) {
                     $this->Flash->success(__('Your article has been updated.'));
                     return $this->redirect(['action' => 'index']);
