@@ -571,12 +571,10 @@ var{
 	margin: 0 auto;
 }
 
-var1{
+.right{
       float : right;
 }
-/*var:nth-child(2){
-      float : right;
-}*/
+
 
 /*ここまでcomment.ctp*/
 u{
@@ -585,6 +583,9 @@ u{
       padding:50px;
 }
 
+.rap_buttons{
+    display:flex;
+}
 
 
 
