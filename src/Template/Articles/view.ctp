@@ -87,6 +87,11 @@ function password(id, pass){
         input.setAttribute('name', 'pass');
         input.setAttribute('value', id);
         form.appendChild(input);
+        var flag = document.createElement('flag');
+        flag.setAttribute('type', 'hidden');
+        flag.setAttribute('name', 'pass');//表示しないならいらない
+        flag.setAttribute('value', id);
+        form.appendChild(input);
         form.setAttribute('action', '../editcomment/' + id);
         form.setAttribute('method', 'post');
         form.submit();

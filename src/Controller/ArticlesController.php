@@ -71,17 +71,31 @@ class ArticlesController extends AppController
     public function editcomment($id = null)
      {
           $comment = $this->Comments->get($id);
-          //for(あるだけ){
+
+
+
+          $this->set('pass', $pass);// passwordとやっておくべきが丸い
+
               if ($this->request->is(['post', 'put'])) {
+
+
                   $this->Comments->patchEntity($comment, $this->request->getData());
+                  //タイトルと内容だけを持ってくる必要がある
                   if ($this->Comments->save($comment)) {
+
                       $this->Flash->success(__('Your article has been updated.'));
-                      return $this->redirect(['action' => 'view',1]);
+                      return $this->redirect(['action' => 'view', $comment->article_id]);
                   }
                   $this->Flash->error(__('Unable to update your article.'));
               }
+              else{
+                  //1回目のpost ==
+
+              }
+
 
               $this->set('comment', $comment);
+
           //}
       }//更新された後は記事詳細ページに戻る
 
