@@ -532,6 +532,9 @@ table td {
     overflow: hidden;
     min-height: 92%; /* full height almost always */
 }
+textarea{
+    resize: none;  
+}
 
 /*ここまで全体で利用*/
 
@@ -606,6 +609,20 @@ u{
     padding-left:0px;
     padding-right:0px;
 }
+#add_post{
+    float : right;/*右寄せ*/
+    margin-left:100px;
+
+}
+#add_clear{
+    float : right;/*右寄せ*/
+    margin-left:100px;
+    display:inline-flex;
+}
+
+#body {
+    resize: none;
+}
 /*ここまでadd.ctp*/
 
 #button2{
@@ -616,14 +633,89 @@ u{
     border-radius: 3px;
     box-shadow: 1px 1px 3px 0px #f3f3f3;
 }
-#iphone{
-      float : right;/*右寄せ*/
-      border:solid 5px #966600;
-      margin:10px;
-      padding:10px;
-      border-radius: 3px;
-      box-shadow: 1px 1px 3px 0px #f3f3f3;
+#right1{
+    float : right;/*右寄せ*/
+    border-radius: 0;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 0px;
+border-style: solid;
+border-width: 0;
+cursor: pointer;
+font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+font-weight: normal;
+line-height: normal;
+margin: 3px 0 1.25rem;
+position: relative;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+padding: 1rem 2rem 1.0625rem 2rem;
+font-size: 1rem;
+background-color: #966600;
+border-color: #007095;
+color: #fff;
+transition: background-color 300ms ease-out;
+/*margin-left:149px;*/
+}
+#left1{
+    float : right;/*右寄せ*/
+    border-radius: 0;
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-bottom-right-radius: 0px;
+border-bottom-left-radius: 0px;
+border-style: solid;
+border-width: 0;
+cursor: pointer;
+font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+font-weight: normal;
+line-height: normal;
+margin: 3px 0 1.25rem;
+position: relative;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+padding: 1rem 2rem 1.0625rem 2rem;
+font-size: 1rem;
+background-color: #966600;
+border-color: #007095;
+color: #fff;
+transition: background-color 300ms ease-out;
+/*margin-left:149px;*/
+}
 /*ここまでview.ctp*/
+#right2{
+        float : right;/*右寄せ*/
+        border-radius: 0;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-style: solid;
+    border-width: 0;
+    cursor: pointer;
+    font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0 0 1.25rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    padding: 1rem 2rem 1.0625rem 2rem;
+    font-size: 1rem;
+    background-color: #966600;
+    border-color: #007095;
+    color: #fff;
+    transition: background-color 300ms ease-out;
+    margin-left:149px;
+}
+
+
+/*ここまでeditcomment.ctp*/
+
 
 /*ここまでlayout.ctp*/
 

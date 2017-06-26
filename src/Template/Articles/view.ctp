@@ -8,14 +8,15 @@
     <fieldset>
     <legend>
         <?=  __(h($article->title)); ?>
+        <!-- ログイン時のみ記事編集ボタン表示 (OTSUKI) -->
+        <?php if(!empty( $auth )) {
+            echo "<div>" . $this->Html->link('編集', ['action' => 'add', $article->id],['id' => 'right1']) . "</div>";
+        }
+        ?>
     </legend>
 </h1>
-<!-- ログイン時のみ記事編集ボタン表示 (OTSUKI) -->
-<?php if(!empty( $auth )) {
-    echo "<div id=right1>" . $this->Html->link('編集', ['action' => 'add', $article->id]) . "</div>";
-}
-?>
 
+<div class="container">
 <!-- 画像表示（上）（OTSUKI）-->
 <?php
 if($article->position == 'top') {
@@ -44,6 +45,7 @@ if($article->position == 'bottom') {
     }
     ?>
 </div>
+</div>
 </fieldset>
 
 <fieldset>
@@ -63,7 +65,7 @@ if($article->position == 'bottom') {
             <div class="button1">
                 <?php
                 echo "<input type='hidden' name='articles_id' value=" . $article->id . ">";
-                echo $this->Form->submit('投稿');
+                echo $this->Form->submit('投稿',['id' => 'left1']);
                 ?>
             </div>
         </form>
@@ -86,7 +88,7 @@ if($article->position == 'bottom') {
     <!-- <form action="../editcomment" method="post"> -->
     <!-- <?= $this->Form->button('編集', ['action'=>'../editcomment', 'method'=>'post', 'onClick'=>"password(<?= $a->id ?>, '<?=$a->pass?>')"]) ?> -->
     <td>
-        <input type="button" value="編集" onClick="password(<?= $a->id ?>, '<?=$a->pass?>')">
+        <input type="button" id="clear" value="編集" onClick="password(<?= $a->id ?>, '<?=$a->pass?>')">
     </td>
     </tr>
     <?php endforeach?>
