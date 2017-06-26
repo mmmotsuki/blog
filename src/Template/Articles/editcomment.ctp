@@ -1,7 +1,5 @@
 <!-- File: src/Template/Articles/index.ctp (delete links added) -->
 
-<h1>コメント編集ぺーじ</h1>
-<!--↑後で消せで消せよや-->
 <div class="container">
     <?php echo $this->Form->create($comment); ?>
     <div>
@@ -17,8 +15,8 @@
             <div>
                 <?php echo $this->Form->button(__('編集'), ['name' => 'edit']); ?>
             </div>
-            <div class="right">
-                <?= $this->Html->link('削除',['action' => 'deletecomment', 'onclick' => "return confirm('削除します')", $comment->id],['id' => 'iphone'])
+            <div>
+                <?= $this->Html->link('削除',['action' => 'deletecomment', 'onclick' => "return confirm('削除します')", $comment->id],['id' => 'right2'])
                 ?>
             </div>
         </div>

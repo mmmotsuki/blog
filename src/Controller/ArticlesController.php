@@ -38,12 +38,10 @@ class ArticlesController extends AppController
     //コメント追加
     public function addcomment()
     {
-        $comment= $this->Comments->newEntity();
+        $comment = $this->Comments->newEntity();
         //CommentsはCommentsTable.phpのことを指す
-
         //postデータを保存する
         if ($this->request->is('post')) {
-
             $comment = $this->Comments->patchEntity($comment, $this->request->getData());
             //patchEntityは更新処理
             $this->log($comment);
@@ -110,28 +108,67 @@ class ArticlesController extends AppController
     //       return $this->redirect(['action' => 'index']);
     //   }
 
+    public function check($id = null) {
+        if($id == null) {
+            $article = $this->Articles->newEntity();
 
+            //file upload---(OTSUKI)-------
+            $filename = $this->request->data['upfile']['tmp_name'];
+            if (is_uploaded_file($filename)) {
+                $dir = WWW_ROOT . DS . 'img';
+                $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
+                $upname = time() . ".{$kakutyosi}";
+                move_uploaded_file($filename, $dir . DS . $upname);
+                // $article->upfile = $upname;
+                $this->set('upname', $upname);
+            }
+            //----------------------
+
+            $this->set('article', $article);
+            $this->set('title', $this->request->data['title']);
+            $this->set('body', $this->request->data['body']);
+            $this->set('position', $this->request->data['position']);
+        }
+        else {
+            $article = $this->Articles->get($id);
+            //file upload---(OTSUKI)-------
+            $filename = $this->request->data['upfile']['tmp_name'];
+            if (is_uploaded_file($filename)) {
+                $dir = WWW_ROOT . DS . 'img';
+                $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
+                $upname = time() . ".{$kakutyosi}";
+                move_uploaded_file($filename, $dir . DS . $upname);
+                // $article->upfile = $upname;
+                $this->set('upname', $upname);
+            }
+            //----------------------
+            $this->set('article',  $article);
+            $this->set('title', $article->title);
+            $this->set('body', $article->body);
+            $this->set('position', $article->position);
+            $this->set('id', $article->id);
+        }
+    }
 
     public function add($id = null)
     {
         //新規作成の処理
-        if($id == null)
-        {
+        if($id == null) {
             $article = $this->Articles->newEntity();
             if ($this->request->is('post')) {
                 $article = $this->Articles->patchEntity($article, $this->request->getData());
                 // Added this line
                 $article->user_id = $this->Auth->user('id');
-                //file upload---(OTSUKI)-------
-                $filename = $this->request->data['upfile']['tmp_name'];
-                if (is_uploaded_file($filename)) {
-                    $dir = WWW_ROOT . DS . 'img';
-                    $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
-                    $upname = time() . ".{$kakutyosi}";
-                    move_uploaded_file($filename, $dir . DS . $upname);
-                    $article->upfile = $upname;
-                }
-                //----------------------
+                    //file upload---(OTSUKI)-------
+                    // $filename = $this->request->data['upfile']['tmp_name'];
+                    // if (is_uploaded_file($filename)) {
+                    //     $dir = WWW_ROOT . DS . 'img';
+                    //     $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
+                    //     $upname = time() . ".{$kakutyosi}";
+                    //     move_uploaded_file($filename, $dir . DS . $upname);
+                    //     $article->upfile = $upname;
+                    // }
+                    //----------------------
                 if ($this->Articles->save($article)) {
                     $this->Flash->success(__('Your article has been saved.'));
                     return $this->redirect(['action' => 'index']);
@@ -141,23 +178,21 @@ class ArticlesController extends AppController
             $this->set('article', $article);
         }
 
-
-
         //記事編集の処理
         else {
             $article = $this->Articles->get($id);
             if ($this->request->is(['post', 'put'])) { //1回目は投稿ボタンが押されてない=postされてないのでスルー)
                 $this->Articles->patchEntity($article, $this->request->getData());
-                //file upload---(OTSUKI)-------
-                $filename = $this->request->data['upfile']['tmp_name'];
-                if (is_uploaded_file($filename)) {
-                    $dir = WWW_ROOT . DS . 'img';
-                    $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
-                    $upname = time() . ".{$kakutyosi}";
-                    move_uploaded_file($filename, $dir . DS . $upname);
-                    $article->upfile = $upname;
-                }
-                //----------------------
+                // //file upload---(OTSUKI)-------
+                // $filename = $this->request->data['upfile']['tmp_name'];
+                // if (is_uploaded_file($filename)) {
+                //     $dir = WWW_ROOT . DS . 'img';
+                //     $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
+                //     $upname = time() . ".{$kakutyosi}";
+                //     move_uploaded_file($filename, $dir . DS . $upname);
+                //     $article->upfile = $upname;
+                // }
+                // //----------------------
                 if ($this->Articles->save($article)) {
                     $this->Flash->success(__('Your article has been updated.'));
                     return $this->redirect(['action' => 'index']);
