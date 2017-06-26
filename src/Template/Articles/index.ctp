@@ -67,7 +67,7 @@
             <div class="cell"><div class="show">
                 <?= $this->Form->postLink('削除',
                     ['action' => 'delete', $article->id],
-                    ['confirm' => 'はい/いいえボタン'])//アラートボックス内　OK/キャンセル　を　はい/いいえ　に変えて欲しいな
+                    ['confirm' => '本当に削除しますか？'])//アラートボックス内　OK/キャンセル　を　はい/いいえ　に変えて欲しいな
                 ?>    <!--if文くれ-->
             </div></div>
         </div>
