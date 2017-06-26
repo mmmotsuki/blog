@@ -94,7 +94,7 @@ class ArticlesController extends AppController
     {
         $comment = $this->Comments->get($id);
         if ($this->Comments->delete($comment)) {
-            $this->Flash->success(__('The comment with id: {0} has been deleted.', h($id)));
+            $this->Flash->success(__('Your comment has been deleted.'));
             return $this->redirect(['action' => 'view', $comment->articles_id]);
         }
         $this->Flash->error(__('could not delete.'));
