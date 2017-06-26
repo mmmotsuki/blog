@@ -32,12 +32,13 @@ if(!empty($upname) && $position == 'bottom') {
     echo $this->Form->hidden('upfile', ['value' => $upname]);
     echo $this->Form->hidden('position', ['value' => $position]);
 }
+
 ?>
 <div>
 
 <div>
-    <?php echo $this->Form->hidden('title', ['title' => $title]); ?><!--titleいじるとアラートでなくなる-->
-    <?php echo $this->Form->hidden('body', ['value' => $body]); ?><!--bodyいじるとアラートでなくなる-->
+    <?php echo $this->Form->hidden('title', ['title' => $title]); ?>
+    <?php echo $this->Form->hidden('body', ['value' => $body]); ?>
 </div>
 
 <div>
