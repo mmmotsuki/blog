@@ -1,23 +1,50 @@
-<div class="container">
-<h1>確認画面です</h1>
+<!-- 確認画面 -->
+
+<?php
+echo $this->Form->create($article, ['url' => ['controller' => 'articles', 'action' => 'add']]);
+if (!empty($id)) {
+    echo $this->Form->hidden('id', ['value' => $id]);
+}
+?>
+
+<body>
+<h1>
+    <legend>
+        <?=  __(h($title));?>
+    </legend>
+</h1>
+
+<!-- 画像表示（上）（OTSUKI）-->
+<?php
+if(!empty($upname) && $position == 'top') {
+    echo "<div>" . $this->Html->image($upname) . "</div>";
+    echo $this->Form->hidden('upfile', ['value' => $upname]);
+    echo $this->Form->hidden('position', ['value' => $position]);
+}
+?>
+
+<div><?= h($body) ?></div>
+
+<!-- 画像表示（下）（OTSUKI）-->
+<?php
+if(!empty($upname) && $position == 'bottom') {
+    echo "<div>" . $this->Html->image($upname) . "</div>";
+    echo $this->Form->hidden('upfile', ['value' => $upname]);
+    echo $this->Form->hidden('position', ['value' => $position]);
+}
+
+?>
+<div>
 
 <div>
-    <div><input type="text" name="namae" placeholder="記事のタイトル" value=""maxlength="10" pattern="^\S+$" required></div></br>
-</div>
-<div>
-    <input type="text" name="namae" placeholder="画像ファイル上" value=""maxlength="10">
-</div>
-<div>
-    <textarea name="content" rows="5" placeholder="記事の本文" maxlength="400"></textarea>
-</div>
-<div>
-    <input type="text" name="namae" placeholder="画像ファイル下" value=""maxlength="10">
+    <?php echo $this->Form->hidden('title', ['title' => $title]); ?>
+    <?php echo $this->Form->hidden('body', ['value' => $body]); ?>
 </div>
 
-<u>
-    <?php echo $this->Form->button(__('戻る')); ?>
-</u>
-<u>
-    <?php echo $this->Form->button(__('完了')); ?>
-</u>
+<div>
+    <?php echo $this->Form->button(__('投稿')); ?>
+    <input type=button value="back" onclick="history.back();">
+    <?php echo $this->Form->end(); ?>
 </div>
+
+</body>

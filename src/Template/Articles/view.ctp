@@ -1,74 +1,117 @@
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
 
-<h1><?= h($article->title) ?></h1>
-<!-- ログイン時のみ記事編集ボタン表示 (OTSUKI) -->
-<?php if(!empty( $auth )) {
-    echo "<div>" . $this->Html->link('編集', ['action' => 'add', $article->id]) . "</div>";
-}
-?>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.css' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js'></script>
 
-<!-- 画像表示（上）（OTSUKI）-->
-<?php
-if($article->position == 'top') {
-    echo "<div>" . $this->Html->image($article->upfile) . "</div>";
-}
-?>
+<h1>
+    <fieldset>
+        <legend>
+            <?=  __(h($article->title)); ?>
+            <!-- ログイン時のみ記事編集ボタン表示 -->
+            <?php if(!empty( $auth )) {
+                echo "<div>" . $this->Html->link('編集', ['action' => 'add', $article->id],['id' => 'right1']) . "</div>";
+            }
+            ?>
+        </legend>
+</h1>
 
-<div><?= h($article->body) ?></div>
+<div class="container">
+    <!-- 画像表示（上）-->
+    <?php
+    if($article->position == 'top') {
+        echo "<div>" . "<a href='/blog/img/". $article->upfile . "' data-lity='data-lity'>";
+        echo "<img src='/blog/img/". $article->upfile . "' width='320px' />";
+        echo "</a>" . "</div>";
+    }
+    ?>
 
-<!-- 画像表示（下）（OTSUKI）-->
-<?php
-if($article->position == 'bottom') {
-    echo "<div>" . $this->Html->image($article->upfile) . "</div>";
-}
-?>
+    <div><?= h($article->body) ?></div>
 
-<div><small>Created: <?= $article->created->format(DATE_RFC850) ?></small></div>
-<div><small>Edited: <?= $article->modified->format(DATE_RFC850) ?></small></div>
+    <!-- 画像表示（下）-->
+    <?php
+    if($article->position == 'bottom') {
+        echo "<div>" .  "<a href='/blog/img/". $article->upfile . "' data-lity='data-lity'>";
+        echo "<img src='/blog/img/". $article->upfile . "' width='320px' />";
+        echo "</a>" . "</div>";
+    }
+    ?>
 
-<form action="../addcomment" method="post">
+    <div><small>Created: <?= $article->created->format(DATE_RFC850) ?></small></div>
     <div>
-        <div><input type="text" name="name" placeholder="コメント投稿者名" value=""maxlength="10" required></div>
-        <div><input type="password" name="pass" placeholder="コメントのパスワード" value=""maxlength="10" required></div>
-    </div>
-    <div class="button1">
-        <textarea name="body" rows="5" placeholder="コメントの本文" maxlength="400" required></textarea>
         <?php
-        $id = $article->id;
-        echo "<input type='hidden' name='articles_id' value=" . $id . ">";
+        if($article->created->format(DATE_RFC850) !== $article->modified->format(DATE_RFC850)) {
+            echo "<small>Edited:" . $article->modified->format(DATE_RFC850) . "</small>";
+        }
         ?>
-            <?=$this->Form->submit('投稿')?>
     </div>
-</form>
+</div>
+</fieldset>
 
-<table border="1">
+<fieldset>
+    <legend>
+        <?= __('Please enter your name , comment and password'); ?>
+    </legend>
+    <form action="../addcomment" method="post">
+        <div>
+            <span style='font-weight:bold'>Name</span> <span style='color:#c3232d'>*</span>
+            <input type="text" name="name" maxlength="10" required>
+        </div>
+        <div>
+            <span style='font-weight:bold'>Comment</span> <span style='color:#c3232d'>*</span>
+            <textarea name="body" rows="5" maxlength="400" required></textarea>
+        </div>
+        <div>
+            <span style='font-weight:bold'>Password</span> <span style='color:#c3232d'>*</span>
+            <input type="password" name="pass" value=""maxlength="10" required>
+        </div>
+        <div class="button1">
+            <?php
+            echo "<input type='hidden' name='articles_id' value=" . $article->id . ">";
+            echo $this->Form->submit('投稿',['id' => 'left1']);
+            ?>
+        </div>
+    </form>
+</fieldset>
+
+<table border-collapse='collapse'>
     <?php
     $no = 1;
     //var_dump($article->comments[6]->body);
     //comments(小文字のcでcomments)はcakePHPで定義されている文言
     foreach($article->comments as $a):
+        echo "<tr frame='below'>";
+        echo "<td width='70'>No. " . $no . "</td>";
+        echo "<td colspan='3'>name: " . $a->name . "</td>";
+        echo "</tr>";
         echo "<tr>";
-        echo "<td>No. " . $no . "</td>";
-        echo "<td>名前:" . $a->name . "</td>";
-        echo "<td>コメント内容:" . $a->body . "</td>";
-        echo "<td>パスワード:" . $a->pass . "</td>";
-        echo "<td>投稿日時:" . $a->created . "</td>";
+        echo "<td colspan='4'>" . $a->body . "</td>";
+        echo "</tr>";
+        // echo "<td>パスワード:" . $a->pass . "</td>";
+        echo "<tr border-bottom='1px'>";
+        echo "<td colspan='2'>Created:" . $a->created->format(DATE_RFC850) . "</td>";
+        echo "<td>";
+        if ($a->created->format(DATE_RFC850) !== $a->modified->format(DATE_RFC850)) {
+            echo "Edited:" . $a->modified->format(DATE_RFC850);
+        }
+        echo "</td>";
         $no++;
     ?>
-    <!-- <form action="../editcomment" method="post"> -->
-    <!-- <?= $this->Form->button('編集', ['action'=>'../editcomment', 'method'=>'post', 'onClick'=>"password(<?= $a->id ?>, '<?=$a->pass?>')"]) ?> -->
-    <td>
-        <input type="button" value="編集" onClick="password(<?= $a->id ?>, '<?=$a->pass?>')">
-    </td>
+        <td>
+            <!-- ↓ id="clear" を解除 -->
+            <input type="button" value="編集" onClick="password(<?= $a->id ?>, '<?= $a->pass ?>', <?= $no ?>)">
+            <!-- <a href="javascript:void(0)" onkClick="javascript:password(<?= $a->id ?>, '<?=$a->pass?>'); return false;">編集</a> -->
+        </td>
     </tr>
+    <tr><td colspan='4'><Hr></td></tr>
     <?php endforeach?>
 </table>
 
 
 <script type="text/javascript">
-<!--
 
-function password(id, pass){
+
+function password(id, pass, no){
 	p = window.prompt("パスワードを入力してください", "");
 
 	if(p == pass) {
@@ -87,6 +130,11 @@ function password(id, pass){
         pass.setAttribute('name', 'pass');
         pass.setAttribute('value', pass);
 
+        var no = document.createElement('input');
+        no.setAttribute('type', 'hidden');
+        no.setAttribute('name', 'no');
+        no.setAttribute('value', no);
+
         // form.appendChild(input);
         form.submit();
 	}
@@ -98,7 +146,6 @@ function password(id, pass){
 	}
 }
 
-// -->
 </script>
 
 </div>

@@ -1,16 +1,14 @@
 <!-- File: src/Template/Articles/index.ctp (delete links added) -->
 
-<h1>コメント編集ぺーじ</h1>
-<!--↑後で消せで消せよや-->
 <div class="container">
     <?php echo $this->Form->create($comment); ?>
     <div>
-        <!-- 入力フォームではなく、表示のみに変更おねがいします（OTSUKI） -->
         <?php echo $this->Form->control('name', ['readonly' => "readonly"]); ?>
     </div>
 
     <div class="button1">
         <?php echo $this->Form->control('body', ['rows' => '5']); ?>
+<<<<<<< HEAD
     </div>
         <var>
             <?php echo $this->Form->button(__('編集'), ['name' => 'edit']); ?>
@@ -21,3 +19,28 @@
             ?>
         </var>
 </div>
+=======
+
+    </div>
+    <div class="rap_buttons">
+            <div>
+                <?php echo $this->Form->button(__('編集'), ['name' => 'edit']); ?>
+            </div>
+            <div>
+                <?= $this->Html->link('削除', ['action' => 'deletecomment', $comment->id], ['id' => 'right2', 'confirm' => '削除してもよろしいですか'])
+                ?>
+                <?php echo $this->Form->end(); ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="cell"><div class="show">
+        <?php echo $this->Form->create($comment); ?>
+        <?= $this->Form->postLink('削除',
+            ['action' => 'deletecomment', $comment->id],
+            ['confirm' => 'はい/いいえボタン'])//アラートボックス内　OK/キャンセル　を　はい/いいえ　に変えて欲しいな
+        ?>    <!--if文くれ-->
+        <?php echo $this->Form->end(); ?>
+
+    </div>
+>>>>>>> 8b438900c0f2fead9c744af9f67e7dad73a0de47

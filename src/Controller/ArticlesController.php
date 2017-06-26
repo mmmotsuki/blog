@@ -38,12 +38,10 @@ class ArticlesController extends AppController
     //コメント追加
     public function addcomment()
     {
-        $comment= $this->Comments->newEntity();
+        $comment = $this->Comments->newEntity();
         //CommentsはCommentsTable.phpのことを指す
-
         //postデータを保存する
         if ($this->request->is('post')) {
-
             $comment = $this->Comments->patchEntity($comment, $this->request->getData());
             //patchEntityは更新処理
             $this->log($comment);
@@ -69,8 +67,12 @@ class ArticlesController extends AppController
 
     //コメント編集
     public function editcomment($id = null)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8b438900c0f2fead9c744af9f67e7dad73a0de47
     {
-        if ($this->request->is('post')) {
+        if ($this->request->is(['post', 'put'])) {
             $comment = $this->Comments->get($id);
             if (isset($_POST['edit'])) {
                 $this->Comments->patchEntity($comment, $this->request->data(), ['validate' => false]);
@@ -101,40 +103,60 @@ class ArticlesController extends AppController
         $this->Flash->error(__('could not delete.'));
     }
 
-    //   $this->request->allowMethod(['post', 'delete']);
-      //
-    //   $article = $this->Articles->get($id);
-    //   if ($this->Articles->delete($article)) {
-    //       $this->Flash->success(__('The article with id: {0} has been deleted.', h($id)));
-    //       return $this->redirect(['action' => 'index']);
-    //   }
+    public function check($id = null) {
+        if($id == null) {
+            $article = $this->Articles->newEntity();
 
+            //file upload---(OTSUKI)-------
+            $filename = $this->request->data['upfile']['tmp_name'];
+            if (is_uploaded_file($filename)) {
+                $dir = WWW_ROOT . DS . 'img';
+                $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
+                $upname = time() . ".{$kakutyosi}";
+                move_uploaded_file($filename, $dir . DS . $upname);
+                // $article->upfile = $upname;
+                $this->set('upname', $upname);
+            }
+            //----------------------
 
+            $this->set('article', $article);
+            $this->set('title', $this->request->data['title']);
+            $this->set('body', $this->request->data['body']);
+            $this->set('position', $this->request->data['position']);
+        }
+        else {
+            $article = $this->Articles->get($id);
+            //file upload---(OTSUKI)-------
+            $filename = $this->request->data['upfile']['tmp_name'];
+            if (is_uploaded_file($filename)) {
+                $dir = WWW_ROOT . DS . 'img';
+                $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
+                $upname = time() . ".{$kakutyosi}";
+                move_uploaded_file($filename, $dir . DS . $upname);
+                // $article->upfile = $upname;
+                $this->set('upname', $upname);
+            }
+            //----------------------
+
+            $this->set('article', $article);
+            $this->set('title', $this->request->data['title']);
+            $this->set('body', $this->request->data['body']);
+            $this->set('position', $this->request->data['position']);
+            $this->set('id', $article->id);
+
+        }
+    }
 
     public function add($id = null)
     {
         //新規作成の処理
-        if($id == null)
-        {
+        if($id == null) {
             $article = $this->Articles->newEntity();
             if ($this->request->is('post')) {
                 $article = $this->Articles->patchEntity($article, $this->request->getData());
                 // Added this line
                 $article->user_id = $this->Auth->user('id');
-                // You could also do the following
-                //$newData = ['user_id' => $this->Auth->user('id')];
-                //$article = $this->Articles->patchEntity($article, $newData);
 
-                //file upload---(OTSUKI)-------
-                $filename = $this->request->data['upfile']['tmp_name'];
-                if (is_uploaded_file($filename)) {
-                    $dir = WWW_ROOT . DS . 'img';
-                    $n = substr(strrchr($filename, '.'), 1);
-                    $upname = time() . '.png';    //拡張子の拡張
-                    move_uploaded_file($filename, $dir . DS . $upname);
-                    $article->upfile = $upname;
-                }
-                //----------------------
                 if ($this->Articles->save($article)) {
                     $this->Flash->success(__('Your article has been saved.'));
                     return $this->redirect(['action' => 'index']);
@@ -142,34 +164,28 @@ class ArticlesController extends AppController
                 $this->Flash->error(__('Unable to add your article.'));
             }
             $this->set('article', $article);
-
-            // Just added the categories list to be able to choose
-            // one category for an article
-            // $categories = $this->Articles->Categories->find('treeList');
-            // $this->set(compact('categories'));
         }
+
         //記事編集の処理
         else {
             $article = $this->Articles->get($id);
-            if ($this->request->is(['post', 'put'])) { //1回目は投稿ボタンが押されてない=postされてないのでスルー)
+            if ($this->request->is(['post', 'put'])) {
                 $this->Articles->patchEntity($article, $this->request->getData());
-                //file upload---(OTSUKI)-------
-                $filename = $this->request->data['upfile']['tmp_name'];
-                if (is_uploaded_file($filename)) {
-                    $dir = WWW_ROOT . DS . 'img';
-                    $n = substr(strrchr($filename, '.'), 1);
-                    $upname = time() . '.png';    //拡張子の拡張
-                    move_uploaded_file($filename, $dir . DS . $upname);
-                    $article->upfile = $upname;
+                //file delete
+                if(!isset($_POST['upfile'])){
+                    $article->upfile = $this->request->query('upfile');
+                    $article->position = null;
+                    // if(file_exists(WWW_ROOT . DS . 'img' . $article->upfile)){
+                    //     // unlink(WWW_ROOT . DS . 'img' . $article->upfile);
+                    // }
                 }
-                //----------------------
                 if ($this->Articles->save($article)) {
                     $this->Flash->success(__('Your article has been updated.'));
                     return $this->redirect(['action' => 'index']);
                 }
                 $this->Flash->error(__('Unable to update your article.'));
             }
-
+            $article = $this->Articles->get($id);
             $this->set('article', $article);
         }
 
@@ -189,7 +205,6 @@ class ArticlesController extends AppController
     //
     //     $this->set('article', $article);
     // }
-
 
     public function delete($id)
     {
@@ -216,7 +231,6 @@ class ArticlesController extends AppController
                 return true;
             }
         }
-
         return parent::isAuthorized($user);
     }
 }
