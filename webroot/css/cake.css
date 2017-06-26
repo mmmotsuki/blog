@@ -533,7 +533,7 @@ table td {
     min-height: 92%; /* full height almost always */
 }
 textarea{
-    resize: none;  
+    resize: none;
 }
 
 /*ここまで全体で利用*/
@@ -554,17 +554,43 @@ textarea{
 }
 .box1{
     border: solid 5px  #966600;
-    margin:20px;
+    margin:10px;
+    padding:10px;
+    display:flex;
 }
-.cell {
-    display:table-cell;
-    margin:20px;
-    padding:15px;
-
-
-    /*line-height: 10px;*/
+#cell1{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+}
+#cell2{
+    -webkit-flex-basis:100px;
+    flex-basis: 500px;
+    -webkit-justify-content: space-around; /* Safari */
+    justify-content:         space-around;
 }
 
+#cell3{
+    -webkit-flex-basis:100px;
+    flex-basis: 500px;
+    -webkit-justify-content: space-around; /* Safari */
+    justify-content:         space-around;
+}
+
+#cell4{
+    -webkit-flex-basis:10px;
+    flex-basis: 10px;
+    -webkit-justify-content: space-around; /* Safari */
+    justify-content:         space-around;
+}
+　
+#cell5{
+    -webkit-flex-basis:10px;
+    flex-basis: 10px;
+    -webkit-justify-content: space-around; /* Safari */
+    justify-content:         space-around;
+}　
 /*ここまでindex.ctp*/
 
 
@@ -586,9 +612,6 @@ u{
       padding:50px;
 }
 
-.rap_buttons{
-    display:flex;
-}
 
 
 
@@ -598,25 +621,36 @@ u{
     font-size:1rem;
     background:#966600;
     color: #fff;
+    border-width: 0
 }
 
 .hide{
      visibility : hidden;
 }
 #file1{
-
     padding:10px;
     padding-left:0px;
     padding-right:0px;
 }
-#add_post{
-    float : right;/*右寄せ*/
-    margin-left:100px;
-
+.rap_buttons{
+    display:flex;
+    -webkit-justify-content: space-around; /* Safari */
+    justify-content:         space-around;
 }
+
 #add_clear{
-    float : right;/*右寄せ*/
-    margin-left:100px;
+    -webkit-flex-basis:100px;
+    flex-basis: 100px;
+    display:inline-flex;
+}
+#add_post{
+    -webkit-flex-basis:100px;
+    flex-basis: 100px;
+    display:inline-flex;
+}
+#add_radio{
+    -webkit-flex-basis:100px;
+    flex-basis: 100px;
     display:inline-flex;
 }
 
