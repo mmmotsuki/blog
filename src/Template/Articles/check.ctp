@@ -6,7 +6,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js'></script>
 
 <?php
-echo $this->Form->create($article, ['url' => ['controller' => 'articles', 'action' => 'add']]);
+echo $this->Form->create($article, ['url' => ['controller' => 'articles', 'action' => 'post']]);
 if (!empty($id)) {
     echo $this->Form->hidden('id', ['value' => $id]);
 }

@@ -149,7 +149,6 @@ class ArticlesController extends AppController
         if($id == null) {
             $article = $this->Articles->newEntity();
             if (isset($_POST['back'])) {
-                $this->Flash->success(__('back.'));
                 $article->title =  $this->request->data['title'];
                 $article->body =  $this->request->data['body'];
                 $this->set('article', $article);

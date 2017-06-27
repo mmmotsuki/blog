@@ -23,14 +23,14 @@
         <!-- <div id="special">
              <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
         </div> -->
-
+<!-- 
         <?php
         if(!empty($article->upfile)) {
             echo "<div>" . "<a href='/blog/img/". $article->upfile . "' data-lity='data-lity'>";
             echo "<img src='/blog/img/". $article->upfile . "' width='320px' />";
             echo "</a>" . "</div>";
         }
-        ?>
+        ?> -->
 
         <div>
             <?php echo $this->Form->file('upfile', array('id' => 'file1', 'accept' => "image/jpeg, image/png")); ?>
