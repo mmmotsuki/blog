@@ -78,25 +78,20 @@
 ?>
     <!--未ログイン時の処理-->
 <div class="container">
-        <!-- <ui>Id</ui>
-        <ui>Titleタイトル</ui>
-        <ui>Created日時</ui>
-        <div class="show">Actions編集、削除</div> -->
-
-<!-- ここで $articles クエリオブジェクトをループして、投稿情報を表示 -->
+    <!-- ここで $articles クエリオブジェクトをループして、投稿情報を表示 -->
     <?php foreach ($articles as $article): ?>
-    <div class="box1">
-        <div class="cell">
+    <div class="cellbox" >
+        <div id="cell1">
             <?= $article->id ?>
         </div>
-        <div class="cell">
+        <div id="cell2">
             <?= $this->Html->link($article->title, ['action' => 'view', $article->id]) ?>
         </div>
-        <div class="cell">
+        <div id="cell3">
             <?= $article->created->format(DATE_RFC850) ?>
         </div>
     </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
 </div>
 <?php
   }

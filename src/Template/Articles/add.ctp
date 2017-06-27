@@ -10,7 +10,7 @@
 <body>
 
     <div class="container">
-        <h1>編集画面</h1>
+        <h1>記事編集</h1>
         <div>
             <?php echo $this->Form->create($article, array('url' => array('controller' => 'articles', 'action' => 'check'), 'type' => 'file')); ?>
         </div>
@@ -31,7 +31,6 @@
             echo "</a>" . "</div>";
         }
         ?>
-
         <div>
             <?php echo $this->Form->file('upfile', array('id' => 'choicefile', 'accept' => "image/jpeg, image/png")); ?>
             <script type="text/javascript" language="javascript">

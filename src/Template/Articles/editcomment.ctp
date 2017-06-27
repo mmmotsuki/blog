@@ -1,6 +1,7 @@
 <!-- File: src/Template/Articles/index.ctp (delete links added) -->
 
 <div class="container">
+    <h1>コメント編集</h1>
     <?php echo $this->Form->create($comment); ?>
     <div>
         <?php echo $this->Form->control('name', ['readonly' => "readonly"]); ?>
