@@ -49,13 +49,13 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         </div> -->
         <?php if(!empty( $auth )) { ?>
             <div class="right">
-                <?= $this->Form->create(null,['url'=>['controller'=>'users','action'=>'logout']]);?>
+                <?= $this->Form->create(null, ['url' => ['controller' => 'users', 'action' => 'logout']]);?>
                 <?= $this->Form->button('ログアウト')?>
                 <?= $this->Form->end()?>
             </div>
         <?php } else { ?>
             <div class="right">
-                <?= $this->Form->create(null,['url'=>['controller'=>'users','action'=>'login']]);?>
+                <?= $this->Form->create(null, ['url' => ['controller' => 'users', 'action' => 'login']]);?>
                 <?= $this->Form->button('ログイン')?>
                 <?= $this->Form->end()?>
             </div>
