@@ -1,4 +1,10 @@
 <!-- File: src/Template/Articles/add.ctp -->
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.css' />
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js'></script>
+
 <head>
 </head>
 <body>
@@ -17,6 +23,14 @@
         <!-- <div id="special">
              <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
         </div> -->
+
+        <?php
+        if(!empty($article->upfile)) {
+            echo "<div>" . "<a href='/blog/img/". $article->upfile . "' data-lity='data-lity'>";
+            echo "<img src='/blog/img/". $article->upfile . "' width='320px' />";
+            echo "</a>" . "</div>";
+        }
+        ?>
 
         <div>
             <?php echo $this->Form->file('upfile', array('id' => 'choicefile', 'accept' => "image/jpeg, image/png")); ?>
