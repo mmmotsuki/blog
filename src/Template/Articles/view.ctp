@@ -10,7 +10,7 @@
             <?=  __(h($article->title)); ?>
             <!-- ログイン時のみ記事編集ボタン表示 -->
             <?php if(!empty( $auth )) {
-                echo "<div>" . $this->Html->link('編集', ['action' => 'add', $article->id],['id' => 'right1']) . "</div>";
+                echo "<div>" . $this->Html->link('編集', ['action' => 'add', $article->id],['id' => 'buttonright']) . "</div>";
             }
             ?>
         </legend>
@@ -68,7 +68,7 @@
         <div class="button1">
             <?php
             echo "<input type='hidden' name='articles_id' value=" . $article->id . ">";
-            echo $this->Form->submit('投稿',['id' => 'left1']);
+            echo $this->Form->submit('投稿',['id' => 'buttonright']);
             ?>
         </div>
     </form>
@@ -99,7 +99,7 @@
     ?>
         <td>
             <!-- ↓ id="clear" を解除 -->
-            <input type="button" value="編集" onClick="password(<?= $a->id ?>, '<?= $a->pass ?>', <?= $no ?>)">
+            <input type="button" id="comment_edit" value="編集" onClick="password(<?= $a->id ?>, '<?= $a->pass ?>', <?= $no ?>)">
             <!-- <a href="javascript:void(0)" onkClick="javascript:password(<?= $a->id ?>, '<?=$a->pass?>'); return false;">編集</a> -->
         </td>
     </tr>

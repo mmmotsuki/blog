@@ -12,18 +12,18 @@
             <?php echo $this->Form->control('title'); ?><!--titleいじるとアラートでなくなる-->
         </div>
         <div>
-            <?php echo $this->Form->control('body', ['rows' => '3'],['id' =>'textsize']); ?><!--bodyいじるとアラートでなくなる-->
+            <?php echo $this->Form->control('body', ['rows' => '3']); ?><!--bodyいじるとアラートでなくなる-->
         </div>
         <!-- <div id="special">
              <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
         </div> -->
 
         <div>
-            <?php echo $this->Form->file('upfile', array('id' => 'file1', 'accept' => "image/jpeg, image/png")); ?>
+            <?php echo $this->Form->file('upfile', array('id' => 'choicefile', 'accept' => "image/jpeg, image/png")); ?>
             <script type="text/javascript" language="javascript">
                 function hoge() {
                     var dom = document.getElementById('add_radio');
-                    document.getElementById("file1").value="";
+                    document.getElementById("choicefile").value="";
                     dom.style.display = "none";
                 }
 
@@ -40,10 +40,10 @@ console.log(name);
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript">
     $(function() {
-        $('#file1').on("change", function() {
+        $('#choicefile').on("change", function() {
             var file = this.files[0];
             var dom = document.getElementById('add_radio');
-            var f_value = document.getElementById('file1');
+            var f_value = document.getElementById('choicefile');
             if(file != null) {
                 // alert('世界の中心で愛を叫ぶ'); // ファイル名をログに出力する
                 dom.style.display = "";
@@ -74,7 +74,7 @@ console.log(name);
     </div>
         <div class="rap_buttons">
         <div>
-            <input type="button" id="clear" value="消去" onClick="hoge()" />
+            <input type="button" id="buttonclear" value="消去" onClick="hoge()" />
         </div>
 
 
