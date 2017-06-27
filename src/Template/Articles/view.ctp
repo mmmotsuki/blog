@@ -10,7 +10,7 @@
             <?=  __(h($article->title)); ?>
             <!-- ログイン時のみ記事編集ボタン表示 -->
             <?php if(!empty( $auth )) {
-                echo "<div>" . $this->Html->link('編集', ['action' => 'add', $article->id],['id' => 'buttonright']) . "</div>";
+                echo "<div>" . $this->Html->link('編集', ['action' => 'post', $article->id],['id' => 'buttonright']) . "</div>";
             }
             ?>
         </legend>

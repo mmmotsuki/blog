@@ -140,52 +140,70 @@ class ArticlesController extends AppController
             $this->set('body', $this->request->data['body']);
             $this->set('position', $this->request->data['position']);
             $this->set('id', $article->id);
-
         }
     }
 
-    public function add($id = null)
+    public function post($id = null)
     {
         //新規作成の処理
         if($id == null) {
             $article = $this->Articles->newEntity();
-            if ($this->request->is('post')) {
-                $article = $this->Articles->patchEntity($article, $this->request->getData());
-                // Added this line
-                $article->user_id = $this->Auth->user('id');
-
-                if ($this->Articles->save($article)) {
-                    $this->Flash->success(__('Your article has been saved.'));
-                    return $this->redirect(['action' => 'index']);
-                }
-                $this->Flash->error(__('Unable to add your article.'));
+            if (isset($_POST['back'])) {
+                $article->title =  $this->request->data['title'];
+                $article->body =  $this->request->data['body'];
+                $this->set('article', $article);
             }
-            $this->set('article', $article);
+            else {
+                if ($this->request->is('post')) {
+                    $article = $this->Articles->patchEntity($article, $this->request->getData());
+                    // Added this line
+                    $article->user_id = $this->Auth->user('id');
+
+                    if ($this->Articles->save($article)) {
+                        $this->Flash->success(__('Your article has been saved.'));
+                        return $this->redirect(['action' => 'index']);
+                    }
+                    $this->Flash->error(__('Unable to add your article.'));
+                }
+                $this->set('article', $article);
+            }
         }
 
         //記事編集の処理
         else {
             $article = $this->Articles->get($id);
-            if ($this->request->is(['post', 'put'])) {
-                $this->Articles->patchEntity($article, $this->request->getData());
-                //file delete
-                if(!isset($_POST['upfile'])){
-                    $article->upfile = $this->request->query('upfile');
-                    $article->position = null;
-                    // if(file_exists(WWW_ROOT . DS . 'img' . $article->upfile)){
-                    //     // unlink(WWW_ROOT . DS . 'img' . $article->upfile);
-                    // }
+            // 戻るボタン押下時
+            if (isset($_POST['back'])) {
+                $article->title =  $this->request->data['title'];
+                $article->body =  $this->request->data['body'];
+                if (!empty($this->request->data['upfile'])) {
+                    $article->upfile =  $this->request->data['upfile'];
+                    $article->position =  $this->request->data['position'];
                 }
-                if ($this->Articles->save($article)) {
-                    $this->Flash->success(__('Your article has been updated.'));
-                    return $this->redirect(['action' => 'index']);
-                }
-                $this->Flash->error(__('Unable to update your article.'));
+                $this->set('article', $article);
             }
-            $article = $this->Articles->get($id);
-            $this->set('article', $article);
-        }
+            else {
+                if ($this->request->is(['post', 'put'])) {
+                    $this->Articles->patchEntity($article, $this->request->getData());
+                    //file delete
+                    if(!isset($_POST['upfile'])){
+                        $article->upfile = $this->request->query('upfile');
+                        $article->position = null;
 
+                        // if(file_exists(WWW_ROOT . DS . 'img' . $article->upfile)){
+                        //     // unlink(WWW_ROOT . DS . 'img' . $article->upfile);
+                        // }
+                    }
+                    if ($this->Articles->save($article)) {
+                        $this->Flash->success(__('Your article has been updated.'));
+                        return $this->redirect(['action' => 'index']);
+                    }
+                    $this->Flash->error(__('Unable to update your article.'));
+                }
+                $article = $this->Articles->get($id);
+                $this->set('article', $article);
+            }
+        }
     }
 
     // public function edit($id = null)
@@ -217,7 +235,7 @@ class ArticlesController extends AppController
     public function isAuthorized($user)
     {
         // All registered users can add articles
-        if ($this->request->getParam('action') === 'add') {
+        if ($this->request->getParam('action') === 'post') {
             return true;
         }
 

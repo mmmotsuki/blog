@@ -1,4 +1,4 @@
-<!-- File: src/Template/Articles/add.ctp -->
+<!-- File: src/Template/Articles/post.ctp -->
 
 
     <!--ログイン時の処理-->
@@ -38,7 +38,7 @@
         <div class="admin"><button type="button" name="show:admin:container:cell_box">管理者表示</button></div>
     </div>
     <div>
-        <div class="show"><?= $this->Html->link('新規作成', ['action' => 'add'],['id'=>'left']) ?></div>
+        <div class="show"><?= $this->Html->link('新規作成', ['action' => 'post'],['id'=>'left']) ?></div>
     </div>
     <div class="container">
             <!-- <ui>Id</ui>
@@ -60,7 +60,7 @@
             </div>
             <div id="cell4"><div class="show">
                 <?= $this->Html->link('編集',
-                    ['action' => 'add', $article->id])
+                    ['action' => 'post', $article->id])
                 ?>
             </div></div>
             <div id="cell5"><div class="show">
