@@ -26,12 +26,13 @@
 
         <?php
         if(!empty($article->upfile)) {
-            echo "<div>" . "<a href='/blog/img/". $article->upfile . "' data-lity='data-lity'>";
-            echo "<img src='/blog/img/". $article->upfile . "' width='320px' />";
-            echo "</a>" . "</div>";
+            // echo "<div>" . "<a href='/blog/img/". $article->upfile . "' data-lity='data-lity'>";
+            // echo "<img src='/blog/img/". $article->upfile . "' width='320px' />";
+            // echo "</a>" . "</div>";
         }
         ?>
         <div>
+
             <?php echo $this->Form->file('upfile', array('id' => 'choicefile', 'accept' => "image/jpeg, image/png")); ?>
             <script type="text/javascript" language="javascript">
                 function hoge() {
