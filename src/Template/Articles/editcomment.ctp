@@ -33,6 +33,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
     <div class="cell"><div class="show">
         <?php echo $this->Form->create($comment); ?>
@@ -44,3 +45,6 @@
 
     </div>
 >>>>>>> 8b438900c0f2fead9c744af9f67e7dad73a0de47
+=======
+</div>
+>>>>>>> 851e73ede2bb884079ae07e4a39783c795cd907a
