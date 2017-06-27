@@ -26,7 +26,7 @@
     }
     ?>
 
-    <div><?= h($article->body) ?></div>
+    <div><?= nl2br(h($article->body)) ?></div>
 
     <!-- 画像表示（下）-->
     <?php
