@@ -4,7 +4,7 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.css' />
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js'></script>
 
-<h1>
+<h2>
     <fieldset>
         <legend>
             <?=  __(h($article->title)); ?>
@@ -14,7 +14,7 @@
             }
             ?>
         </legend>
-</h1>
+</h2>
 
 <div class="container">
     <!-- 画像表示（上）-->

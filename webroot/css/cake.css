@@ -710,12 +710,13 @@ u{
 /*今使ってない↓*/
 .clear{clear:both;}
 
-h1{
- width: ○○px;/*画像の横幅*/
- height: ○○px;/*画像の高さ*/
- background: url(画像パス) no-repeat;
- /*background: url(画像パス) no-repeat !important; 強制的に合わせる場合*/
+h1 a {
+  display:block;
+  width:280px;
+  height:100px;
+  background-image:url("../img/logo.png");
+  background-repeat:no-repeat;
 }
-h1 a{
- display: none; /*元あった文字はこれで消す*/
+h1 span {
+  display:none;
 }
