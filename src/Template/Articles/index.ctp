@@ -34,8 +34,8 @@
 <div id="item_list">
         <!-- ↑消さないで -->
     <div onclick="hoge(event)">
-        <div class="admin"><button type="button" name="admin:container:cell_box">ゲスト表示</button></div>
-        <div class="admin"><button type="button" name="show:admin:container:cell_box">管理者表示</button></div>
+        <div class="admin"><button type="button" name="admin:container:cellbox">ゲスト表示</button></div>
+        <div class="admin"><button type="button" name="show:admin:container:cellbox">管理者表示</button></div>
     </div>
     <div>
         <div class="show"><?= $this->Html->link('新規作成', ['action' => 'post'],['id'=>'left']) ?></div>
@@ -50,7 +50,7 @@
         <?php foreach ($articles as $article): ?>
         <div class="cellbox" >
             <div id="cell1">
-                <?= $article->id ?>
+                <?= $article->id . '　'?>
             </div>
             <div id="cell2">
                 <?= $this->Html->link($article->title, ['action' => 'view', $article->id]) ?>

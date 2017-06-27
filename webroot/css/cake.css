@@ -587,6 +587,7 @@ var{
     flex-basis: 10px;
     -webkit-justify-content: space-around; /* Safari */
     justify-content:         space-around;
+
 }　
 /*ここまでindex.ctp*/
 
@@ -600,11 +601,12 @@ var{
 /*ここまでcomment.ctp*/
 
 #buttonclear{
-    padding:1rem 2rem 1.0625rem 2rem;
-    font-size:1rem;
-    background:#966600;
+    /*padding:0.25rem 0.5rem 0.2625rem 0.5rem;
+    font-size:1rem;*/
+    /*background:#966600;
     color: #fff;
-    border-width: 0
+    border-width: 0*/
+
 }
 
 .hide{
@@ -632,9 +634,9 @@ var{
     display:inline-flex;
 }
 #add_radio{
-    -webkit-flex-basis:100px;
+    /*-webkit-flex-basis:100px;
     flex-basis: 100px;
-    display:inline-flex;
+    display:inline-flex;*/
 }
 
 #body {
@@ -710,13 +712,11 @@ u{
 /*今使ってない↓*/
 .clear{clear:both;}
 
-h1 a {
+h6  {
   display:block;
-  width:280px;
-  height:100px;
+  width:100px;
+  height:50px;
   background-image:url("../img/logo.png");
   background-repeat:no-repeat;
-}
-h1 span {
   display:none;
 }

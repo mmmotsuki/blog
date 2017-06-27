@@ -18,7 +18,7 @@
             <?php echo $this->Form->control('title'); ?><!--titleいじるとアラートでなくなる-->
         </div>
         <div>
-            <?php echo $this->Form->control('body', ['rows' => '3']); ?><!--bodyいじるとアラートでなくなる-->
+            <?php echo $this->Form->control('body', ['rows' => '3','maxlength' => '100' ]); ?><!--bodyいじるとアラートでなくなる-->
         </div>
         <!-- <div id="special">
              <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
@@ -86,13 +86,13 @@ console.log(name);
             , $attributes,['id' => 'add_clear']); ?>
         </div>
     </div>
-        <div class="rap_buttons">
+
         <div>
-            <input type="button" id="buttonclear" value="消去" onClick="hoge()" />
+            <input type="button" id="buttonclear" value="画像取消" onClick="hoge()" />
         </div>
 
 
-
+    <div class="rap_buttons">
         <div>
             <?php echo $this->Form->button(__('確認'), ['id' => 'add_post']); ?>
         </div>
