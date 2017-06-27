@@ -143,7 +143,7 @@ class ArticlesController extends AppController
         }
     }
 
-    public function add($id = null)
+    public function post($id = null)
     {
         //新規作成の処理
         if($id == null) {
@@ -236,7 +236,7 @@ class ArticlesController extends AppController
     public function isAuthorized($user)
     {
         // All registered users can add articles
-        if ($this->request->getParam('action') === 'add') {
+        if ($this->request->getParam('action') === 'post') {
             return true;
         }
 

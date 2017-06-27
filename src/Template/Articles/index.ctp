@@ -39,7 +39,7 @@
     </div>
     <!-- <div class="left"> -->
     <div>
-        <div class="show"><?= $this->Html->link('新規作成', ['action' => 'add']) ?></div>
+        <div class="show"><?= $this->Html->link('新規作成', ['action' => 'post']) ?></div>
     </div>
     <div class="container">
             <!-- <ui>Id</ui>
@@ -61,7 +61,7 @@
             </div>
             <div id="cell4"><div class="show">
                 <?= $this->Html->link('編集',
-                    ['action' => 'add', $article->id])
+                    ['action' => 'post', $article->id])
                 ?>
             </div></div>
             <div id="cell5"><div class="show">
