@@ -34,7 +34,7 @@ if(!empty($upname) && $position == 'top') {
 }
 ?>
 
-<div><?= h($body) ?></div>
+<div><?= nl2br(h($body)) ?></div>
 
 <!-- 画像表示（下）（OTSUKI）-->
 <?php
