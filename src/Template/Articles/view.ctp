@@ -10,7 +10,7 @@
             <?=  __(h($article->title)); ?>
             <!-- ログイン時のみ記事編集ボタン表示 -->
             <?php if(!empty( $auth )) {
-                echo "<div>" . $this->Html->link('編集', ['action' => 'post', $article->id],['id' => 'buttonright']) . "</div>";
+                echo "<div>" . $this->Html->link('編集', ['action' => 'add', $article->id],['id' => 'buttonright']) . "</div>";
             }
             ?>
         </legend>
@@ -58,8 +58,8 @@
             <input type="text" name="name" maxlength="10" required>
         </div>
         <div>
-            <span style='font-weight:bold'>Comment</span> <span style='color:#c3232d'>*</span>
-            <textarea name="body" rows="5" maxlength="400" required></textarea>
+            <span style='font-weight:bold'>Body</span> <span style='color:#c3232d'>*</span>
+            <textarea name="body" rows="5" maxlength="300" required></textarea>
         </div>
         <div>
             <span style='font-weight:bold'>Password</span> <span style='color:#c3232d'>*</span>

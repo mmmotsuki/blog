@@ -37,7 +37,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
-                <h1><a href="/blog">Articles</a></h1>
+                <h1>
+                    <a href="/blog"><img src="/blog/img/logo.png" alt="ロゴ"></a>
+                </h1>
+
             </li>
         </ul>
         <!--
