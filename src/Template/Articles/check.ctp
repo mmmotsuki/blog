@@ -5,8 +5,9 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.css' />
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js'></script>
 
+<h2>以下の内容で投稿します</h2>
 <?php
-echo $this->Form->create($article, ['url' => ['controller' => 'articles', 'action' => 'add']]);
+echo $this->Form->create($article, ['url' => ['controller' => 'articles', 'action' => 'post']]);
 if (!empty($id)) {
     echo $this->Form->hidden('id', ['value' => $id]);
 }
@@ -14,9 +15,11 @@ if (!empty($id)) {
 
 <body>
 <h1>
-    <legend>
-        <?=  __(h($title));?>
-    </legend>
+    <fieldset>
+        <legend>
+            <?=  __(h($title));?>
+        </legend>
+    <fieldset>
 </h1>
 
 <!-- 画像表示（上）（OTSUKI）-->

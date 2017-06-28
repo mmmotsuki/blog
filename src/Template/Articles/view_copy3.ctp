@@ -26,7 +26,7 @@
     }
     ?>
 
-    <div><?= nl2br(h($article->body)) ?></div>
+    <div><?= h($article->body) ?></div>
 
     <!-- 画像表示（下）-->
     <?php
@@ -58,8 +58,8 @@
             <input type="text" name="name" maxlength="10" required>
         </div>
         <div>
-            <span style='font-weight:bold'>Body</span> <span style='color:#c3232d'>*</span>
-            <textarea name="body" rows="5" maxlength="300" required></textarea>
+            <span style='font-weight:bold'>Comment</span> <span style='color:#c3232d'>*</span>
+            <textarea name="body" rows="5" maxlength="400" required></textarea>
         </div>
         <div>
             <span style='font-weight:bold'>Password</span> <span style='color:#c3232d'>*</span>
@@ -80,10 +80,10 @@
     //var_dump($article->comments[6]->body);
     //comments(小文字のcでcomments)はcakePHPで定義されている文言
     foreach($article->comments as $a):
-        echo "<div class='commentbox'>";
+        echo "<tr frame='below'>";
         echo "<td width='70'>No. " . $no . "</td>";
         echo "<td colspan='3'>name: " . $a->name . "</td>";
-        echo "</div>";
+        echo "</tr>";
         echo "<tr>";
         echo "<td colspan='4'>" . $a->body . "</td>";
         echo "</tr>";
@@ -99,7 +99,7 @@
     ?>
         <td>
             <!-- ↓ id="clear" を解除 -->
-            <input type="button" id="commentedit" value="編集" onClick="password(<?= $a->id ?>, '<?= $a->pass ?>', <?= $no ?>)">
+            <input type="button" id="comment_edit" value="編集" onClick="password(<?= $a->id ?>, '<?= $a->pass ?>', <?= $no ?>)">
             <!-- <a href="javascript:void(0)" onkClick="javascript:password(<?= $a->id ?>, '<?=$a->pass?>'); return false;">編集</a> -->
         </td>
     </tr>

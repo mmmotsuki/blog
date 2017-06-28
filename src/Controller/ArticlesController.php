@@ -142,13 +142,12 @@ class ArticlesController extends AppController
         }
     }
 
-    public function add($id = null)
+    public function post($id = null)
     {
         //新規作成の処理
         if($id == null) {
             $article = $this->Articles->newEntity();
             if (isset($_POST['back'])) {
-                $this->Flash->success(__('back.'));
                 $article->title =  $this->request->data['title'];
                 $article->body =  $this->request->data['body'];
                 $this->set('article', $article);
@@ -235,7 +234,7 @@ class ArticlesController extends AppController
     public function isAuthorized($user)
     {
         // All registered users can add articles
-        if ($this->request->getParam('action') === 'add') {
+        if ($this->request->getParam('action') === 'post') {
             return true;
         }
 

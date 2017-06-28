@@ -37,7 +37,10 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <nav class="top-bar expanded" data-topbar role="navigation">
         <ul class="title-area large-3 medium-4 columns">
             <li class="name">
-                <h1><a href="/blog/articles">Articles</a></h1>
+                <h1>
+                    <a href="/blog"><img src="/blog/img/logo.png" alt="ロゴ"></a>
+                </h1>
+
             </li>
         </ul>
         <!--
@@ -47,19 +50,28 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
                 <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
             </ul>
         </div> -->
-        <?php if(!empty( $auth )) { ?>
-            <div class="right">
-                <?= $this->Form->create(null, ['url' => ['controller' => 'users', 'action' => 'logout']]);?>
-                <?= $this->Form->button('ログアウト')?>
-                <?= $this->Form->end()?>
-            </div>
-        <?php } else { ?>
-            <div class="right">
-                <?= $this->Form->create(null, ['url' => ['controller' => 'users', 'action' => 'login']]);?>
-                <?= $this->Form->button('ログイン')?>
-                <?= $this->Form->end()?>
-            </div>
-        <?php } ?>
+
+        <script>
+        function logout_button () {
+            var flag = confirm ('ログアウトしてよろしいですか？');
+                return flag;
+        }
+        </script>
+        <?php
+        if(!empty( $auth )) {
+            echo '<div class="right">';
+            echo $this->Form->create(null, ['url' => ['controller' => 'users', 'action' => 'logout'], 'onsubmit' => 'return logout_button()']);
+            echo $this->Form->button('ログアウト');
+            echo $this->Form->end();
+            echo '</div>';
+        } else {
+            echo '<div class="right">';
+            echo $this->Form->create(null, ['url' => ['controller' => 'users', 'action' => 'login']]);
+            echo $this->Form->button('ログイン');
+            echo $this->Form->end();
+            echo '</div>';
+        }
+        ?>
     </nav>
 
     <?= $this->Flash->render() ?>
