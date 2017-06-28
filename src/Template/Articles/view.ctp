@@ -26,7 +26,7 @@
     }
     ?>
 
-    <div><?= nl2br(h($article->body)) ?></div>
+    <div><?= h($article->body) ?></div>
 
     <!-- 画像表示（下）-->
     <?php
@@ -58,8 +58,8 @@
             <input type="text" name="name" maxlength="10" required>
         </div>
         <div>
-            <span style='font-weight:bold'>Body</span> <span style='color:#c3232d'>*</span>
-            <textarea name="body" rows="5" maxlength="300" required></textarea>
+            <span style='font-weight:bold'>Bodt</span> <span style='color:#c3232d'>*</span>
+            <textarea name="body" rows="5" maxlength="400" required></textarea>
         </div>
         <div>
             <span style='font-weight:bold'>Password</span> <span style='color:#c3232d'>*</span>
@@ -139,7 +139,7 @@ function password(id, pass, no){
         form.submit();
 	}
 	else if(p != "" && p != null) {
-		window.alert(pass + 'パスワードが違います');
+		window.alert('パスワードが違います');
 	}
 	else {
 		window.alert('キャンセルされました');
