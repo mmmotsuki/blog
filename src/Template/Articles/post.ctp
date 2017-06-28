@@ -10,7 +10,7 @@
 <body>
 
     <div class="container">
-        <h1>記事編集</h1>
+        <h1>新規投稿</h1>
         <div>
             <?php echo $this->Form->create($article, array('url' => array('controller' => 'articles', 'action' => 'check'), 'type' => 'file')); ?>
         </div>

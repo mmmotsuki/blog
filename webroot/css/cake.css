@@ -634,9 +634,9 @@ var{
     display:inline-flex;
 }
 #add_radio{
-    /*-webkit-flex-basis:100px;
+    -webkit-flex-basis:100px;
     flex-basis: 100px;
-    display:inline-flex;*/
+    display:inline-flex;
 }
 
 #body {
