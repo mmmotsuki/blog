@@ -10,7 +10,16 @@
 <body>
 
     <div class="container">
-        <h1>記事編集</h1>
+        <?php
+        if($article->id == null){
+        echo '<h1>新規投稿</h1>';
+    }else{
+        echo '<h1>記事編集</h1>';
+    }
+
+
+     ?>
+         </div>
         <div>
             <?php echo $this->Form->create($article, array('url' => array('controller' => 'articles', 'action' => 'check'), 'type' => 'file')); ?>
         </div>
