@@ -18,7 +18,7 @@
             <?php echo $this->Form->control('title'); ?><!--titleいじるとアラートでなくなる-->
         </div>
         <div>
-            <?php echo $this->Form->control('body', ['rows' => '3','maxlength' => '100' ]); ?><!--bodyいじるとアラートでなくなる-->
+            <?php echo $this->Form->control('body', ['rows' => '3']); ?><!--bodyいじるとアラートでなくなる-->
         </div>
         <!-- <div id="special">
              <?php echo $this->Form->file('upfile', array('accept' => "image/jpeg, image/png")); ?>
@@ -33,7 +33,7 @@
         ?>
         <div>
 
-            <?php echo $this->Form->file('upfile', array('id' => 'choicefile', 'accept' => "image/jpeg, image/png")); ?>
+            <?php echo $this->Form->file('upfile', array('id' => 'choicefile', 'accept' => "image/jpeg, image/jpg, image/png")); ?>
             <script type="text/javascript" language="javascript">
                 function hoge() {
                     var dom = document.getElementById('add_radio');
