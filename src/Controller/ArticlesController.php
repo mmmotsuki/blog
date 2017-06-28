@@ -103,7 +103,7 @@ class ArticlesController extends AppController
         if($id == null) {
             $article = $this->Articles->newEntity();
 
-            //file upload---(OTSUKI)-------
+            //file upload------------
             $filename = $this->request->data['upfile']['tmp_name'];
             if (is_uploaded_file($filename)) {
                 $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
@@ -127,7 +127,7 @@ class ArticlesController extends AppController
         }
         else {
             $article = $this->Articles->get($id);
-            //file upload---(OTSUKI)-------
+            //file upload-------------
             $filename = $this->request->data['upfile']['tmp_name'];
             if (is_uploaded_file($filename)) {
                 $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
@@ -198,10 +198,6 @@ class ArticlesController extends AppController
                     if(!isset($_POST['upfile'])){
                         $article->upfile = $this->request->query('upfile');
                         $article->position = null;
-
-                        // if(file_exists(WWW_ROOT . DS . 'img' . $article->upfile)){
-                        //     // unlink(WWW_ROOT . DS . 'img' . $article->upfile);
-                        // }
                     }
                     if ($this->Articles->save($article)) {
                         $this->Flash->success(__('Your article has been updated.'));

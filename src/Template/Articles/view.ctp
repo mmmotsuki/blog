@@ -110,7 +110,6 @@
 
 <script type="text/javascript">
 
-
 function password(id, pass, no){
 	p = window.prompt("パスワードを入力してください", "");
 

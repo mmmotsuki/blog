@@ -5,7 +5,7 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.css' />
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js'></script>
 
-<h2>以下の内容で投稿します</h2>
+<h1>以下の内容で投稿します</h1>
 <?php
 echo $this->Form->create($article, ['url' => ['controller' => 'articles', 'action' => 'post']]);
 if (!empty($id)) {

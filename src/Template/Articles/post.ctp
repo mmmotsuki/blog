@@ -6,19 +6,18 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/lity/1.6.6/lity.js'></script>
 
 <head>
-</head>
-<body>
-
-    <div class="container">
-        <?php
-        if($article->id == null){
+    <?php
+    if ($article->id == null) {
         echo '<h1>新規投稿</h1>';
-    }else{
+    }
+    else {
         echo '<h1>記事編集</h1>';
     }
+    ?>
+</head>
 
-
-     ?>
+<body>
+    <div class="container">
          </div>
         <div>
             <?php echo $this->Form->create($article, array('url' => array('controller' => 'articles', 'action' => 'check'), 'type' => 'file')); ?>
