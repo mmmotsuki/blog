@@ -95,5 +95,5 @@ if(!empty( $auth )){
         <?php endforeach; ?>
     </div>
 <?php
-
+}
 ?>
