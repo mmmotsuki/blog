@@ -107,7 +107,7 @@ class ArticlesController extends AppController
             $filename = $this->request->data['upfile']['tmp_name'];
             if (is_uploaded_file($filename)) {
                 $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
-                if ($kakutyosi == 'png' || $kakutyosi == 'jpg' || $kakutyosi == 'jpeg') {
+                if (strtolower($kakutyosi) == 'png' || strtolower($kakutyosi) == 'jpg' || strtolower($kakutyosi) === 'jpeg') {
                     $dir = WWW_ROOT . DS . 'img';
                     $upname = time() . ".{$kakutyosi}";
                     move_uploaded_file($filename, $dir . DS . $upname);
@@ -131,7 +131,7 @@ class ArticlesController extends AppController
             $filename = $this->request->data['upfile']['tmp_name'];
             if (is_uploaded_file($filename)) {
                 $kakutyosi = substr(strrchr($this->request->data['upfile']['name'], '.'), 1);
-                if ($kakutyosi == 'png' || $kakutyosi == 'jpg' || $kakutyosi == 'jpeg') {
+                if (strtolower($kakutyosi) === 'png' || strtolower($kakutyosi) === 'jpg' || strtolower($kakutyosi) === 'jpeg') {
                     $dir = WWW_ROOT . DS . 'img';
                     $upname = time() . ".{$kakutyosi}";
                     move_uploaded_file($filename, $dir . DS . $upname);
