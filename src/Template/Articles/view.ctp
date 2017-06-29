@@ -58,7 +58,7 @@
             <input type="text" name="name" maxlength="10" required>
         </div>
         <div>
-            <span style='font-weight:bold'>Bodt</span> <span style='color:#c3232d'>*</span>
+            <span style='font-weight:bold'>Body</span> <span style='color:#c3232d'>*</span>
             <textarea name="body" rows="5" maxlength="400" required></textarea>
         </div>
         <div>
